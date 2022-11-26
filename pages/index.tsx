@@ -1,59 +1,89 @@
 import {
-  Badge,
   Box,
   Button,
   Center,
   HStack,
   PinInput,
   PinInputField,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { db } from "../firebaseConfig";
 
 export default function Home() {
   const [isLoading, setLoading] = useState(false);
   const [pin, setPin] = useState("");
   const router = useRouter();
+  const toast = useToast();
 
-  function enterQwith() {
+  async function enterQwith() {
     setLoading(true);
-    setTimeout(() => {
+    const matchedRooms = await getDocs(
+      query(
+        collection(db, "rooms"),
+        where("pin", "==", pin),
+        where("status", "==", "waiting")
+      )
+    );
+
+    if (matchedRooms.size === 0) {
+      toast({
+        title: "Error.",
+        description: `No rooms found with pin ${pin}`,
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+      setPin("");
       setLoading(false);
-    }, 3000);
-    router.push(`/rooms/${pin}`);
+      return;
+    }
+
+    if (matchedRooms.size > 1) {
+      toast({
+        title: "Error.",
+        description: `Internal error: found ${matchedRooms.size} rooms with pin ${pin}`,
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+      setPin("");
+      setLoading(false);
+      return;
+    }
+
+    const room = matchedRooms.docs[0];
+    const roomId = room.id;
+
+    router.push(`/rooms/${roomId}`);
   }
 
   return (
     <>
       <Center h="100vh">
-        <Box
-          w="md"
-          h="sm"
-          borderWidth="1px"
-          borderRadius="lg"
-          overflow="hidden"
-        >
-          <VStack>
-            <Image src="/vercel.svg" width={200} height={200} alt="logo" />
-            <HStack>
-              <PinInput onChange={setPin}>
-                <PinInputField />
-                <PinInputField />
-                <PinInputField />
-                <PinInputField />
-              </PinInput>
-            </HStack>
-            <Button
-              isLoading={isLoading}
-              disabled={pin.length !== 4}
-              onClick={enterQwith}
-            >
-              Click me
-            </Button>
-          </VStack>
-        </Box>
+        <VStack spacing={4}>
+          <Image src="/vercel.svg" width={200} height={200} alt="logo" />
+          <Box h={8} />
+          <HStack>
+            <PinInput onChange={setPin}>
+              <PinInputField />
+              <PinInputField />
+              <PinInputField />
+              <PinInputField />
+            </PinInput>
+          </HStack>
+          <Button
+            isLoading={isLoading}
+            disabled={pin.length !== 4}
+            onClick={enterQwith}
+          >
+            Click me
+          </Button>
+        </VStack>
       </Center>
     </>
   );
