@@ -130,13 +130,13 @@ export default function CreateQuizPage() {
 
   async function saveRoom() {
     // There's nothing to do here since we save all the quizzes in real time
-    // Just navigate the user to /users/[uid]/rooms/
+    // Just navigate the user to /users/[uid]/
     // However, clicking 'Save' takes 0 ms is not a good UX,
     // so we can add a loading state here
     setSaving(true);
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setSaving(false);
 
-    router.push(`/users/${user!.uid}/rooms`);
+    router.push(`/users/${user!.uid}`);
   }
 }
