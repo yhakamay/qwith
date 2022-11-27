@@ -9,7 +9,7 @@ import { ChoiceQuiz } from "./choiceQuiz";
 import { Team } from "./team";
 
 export type Room = {
-  pin: number;
+  pin: string;
   status: "waiting" | "playing" | "closed";
   title: string;
   description?: string;
