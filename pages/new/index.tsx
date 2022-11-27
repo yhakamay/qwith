@@ -97,10 +97,8 @@ export default function CreateRoomPage() {
       updatedAt: new Date(),
       expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
       createdBy: user!.uid,
-      teams: [],
       pin: pin!,
       status: "waiting",
-      quizzes: [],
     };
 
     try {

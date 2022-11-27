@@ -5,8 +5,6 @@ import {
   SnapshotOptions,
   WithFieldValue,
 } from "firebase/firestore";
-import { ChoiceQuiz } from "./choiceQuiz";
-import { Team } from "./team";
 
 export type Room = {
   pin: string;
@@ -17,8 +15,6 @@ export type Room = {
   updatedAt: Date;
   expiresAt: Date;
   createdBy: string;
-  quizzes: ChoiceQuiz[];
-  teams: Team[];
 };
 
 export const roomConverter: FirestoreDataConverter<Room> = {
@@ -32,8 +28,6 @@ export const roomConverter: FirestoreDataConverter<Room> = {
       updatedAt: room.updatedAt,
       expiresAt: room.expiresAt,
       createdBy: room.createdBy,
-      quizzes: room.quizzes,
-      teams: room.teams,
     };
   },
   fromFirestore(
@@ -50,8 +44,6 @@ export const roomConverter: FirestoreDataConverter<Room> = {
       updatedAt: data.updatedAt.toDate(),
       expiresAt: data.expiresAt.toDate(),
       createdBy: data.createdBy,
-      quizzes: data.quizzes,
-      teams: data.teams,
     };
   },
 };
