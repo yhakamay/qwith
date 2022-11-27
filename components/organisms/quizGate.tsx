@@ -52,5 +52,5 @@ export default function QuizGate(props: QuizGateProps) {
     return <QuizWaiting roomId={roomId} teamId={teamId} />;
   }
 
-  return <QuizPlay />;
+  return <QuizPlay roomId={roomId} teamId={teamId} />;
 }

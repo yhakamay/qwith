@@ -1,85 +1,82 @@
 import {
-  Button,
   HStack,
   PinInput,
   PinInputField,
+  Spinner,
   useToast,
   VStack,
 } from "@chakra-ui/react";
-import { collection, getDocs, query, where } from "firebase/firestore";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { db } from "../firebaseConfig";
+import { useHttpsCallable } from "react-firebase-hooks/functions";
+import { functions } from "../firebaseConfig";
 
 export default function Home() {
-  const [isLoading, setLoading] = useState(false);
   const [pin, setPin] = useState("");
   const router = useRouter();
+  const [executeCallable, loading, error] = useHttpsCallable(
+    functions,
+    "getRoomIdWithPin"
+  );
   const toast = useToast();
-
-  async function tryEnterRoom() {
-    setLoading(true);
-    const matchedRooms = await getDocs(
-      query(
-        collection(db, "rooms"),
-        where("pin", "==", pin),
-        where("status", "!=", "closed")
-      )
-    );
-
-    if (matchedRooms.size === 0) {
-      toast({
-        title: "Error.",
-        description: `No rooms found with pin ${pin}`,
-        status: "error",
-        duration: 9000,
-        isClosable: true,
-      });
-      setPin("");
-      setLoading(false);
-      return;
-    }
-
-    if (matchedRooms.size > 1) {
-      toast({
-        title: "Error.",
-        description: `Internal error: found ${matchedRooms.size} rooms with pin ${pin}`,
-        status: "error",
-        duration: 9000,
-        isClosable: true,
-      });
-      setPin("");
-      setLoading(false);
-      return;
-    }
-
-    const room = matchedRooms.docs[0];
-    const roomId = room.id;
-
-    router.push(`/rooms/${roomId}`);
-  }
 
   return (
     <>
       <VStack spacing={4} pt="30vh">
         <Image src="/vercel.svg" width={200} height={200} alt="logo" />
         <HStack pt={8}>
-          <PinInput onChange={setPin}>
+          <PinInput
+            onChange={onPinChange}
+            value={pin}
+            isDisabled={loading}
+            autoFocus
+          >
             <PinInputField />
             <PinInputField />
             <PinInputField />
             <PinInputField />
           </PinInput>
         </HStack>
-        <Button
-          isLoading={isLoading}
-          disabled={pin.length !== 4}
-          onClick={tryEnterRoom}
-        >
-          Click me
-        </Button>
+        <Spinner hidden={!loading} />
       </VStack>
     </>
   );
+
+  async function tryEnterRoom(pin: string) {
+    const roomId = (await executeCallable({ pin }))?.data;
+
+    if (error) {
+      toast({
+        title: "Error",
+        description: error.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+      return;
+    }
+
+    if (roomId === null || roomId === undefined) {
+      toast({
+        title: "Room not found",
+        description: "Please check the PIN and try again.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+      return;
+    }
+
+    router.push(`/rooms/${roomId}`);
+  }
+
+  async function onPinChange(pin: string) {
+    setPin(pin);
+
+    if (pin.length === 4) {
+      await tryEnterRoom(pin);
+      setPin("");
+    }
+  }
 }

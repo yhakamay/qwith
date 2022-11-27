@@ -51,7 +51,7 @@ export default function QuizzesList(props: QuizzesListProps) {
 
   return (
     <VStack>
-      <Card minWidth="sm" maxWidth="100vw" overflow="hidden">
+      <Card overflow="hidden">
         <CardBody>
           <Stack divider={<StackDivider />} spacing="4">
             {quizzes?.map((quiz) => (

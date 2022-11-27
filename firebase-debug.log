@@ -1,0 +1,365 @@
+[debug] [2022-11-27T14:20:11.018Z] ----------------------------------------------------------------------
+[debug] [2022-11-27T14:20:11.023Z] Command:       /opt/homebrew/Cellar/node/19.1.0/bin/node /opt/homebrew/bin/firebase deploy --only functions
+[debug] [2022-11-27T14:20:11.023Z] CLI Version:   11.16.1
+[debug] [2022-11-27T14:20:11.023Z] Platform:      darwin
+[debug] [2022-11-27T14:20:11.023Z] Node Version:  v19.1.0
+[debug] [2022-11-27T14:20:11.023Z] Time:          Sun Nov 27 2022 23:20:11 GMT+0900 (Japan Standard Time)
+[debug] [2022-11-27T14:20:11.023Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-11-27T14:20:11.060Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-11-27T14:20:11.060Z] > authorizing via signed-in user (yhakamaya1031@gmail.com)
+[debug] [2022-11-27T14:20:11.060Z] [iam] checking project qwith-98273 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2022-11-27T14:20:11.062Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/qwith-98273:testIamPermissions [none]
+[debug] [2022-11-27T14:20:11.062Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/qwith-98273:testIamPermissions x-goog-quota-user=projects/qwith-98273
+[debug] [2022-11-27T14:20:11.062Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/qwith-98273:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2022-11-27T14:20:11.904Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/qwith-98273:testIamPermissions 200
+[debug] [2022-11-27T14:20:11.904Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/qwith-98273:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2022-11-27T14:20:11.905Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/qwith-98273/serviceAccounts/qwith-98273@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2022-11-27T14:20:11.905Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/qwith-98273/serviceAccounts/qwith-98273@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2022-11-27T14:20:12.673Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/qwith-98273/serviceAccounts/qwith-98273@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2022-11-27T14:20:12.674Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/qwith-98273/serviceAccounts/qwith-98273@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'qwith-98273'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] Running command: npm --prefix "$RESOURCE_DIR" run build
+[info] ✔  functions: Finished running predeploy script. 
+[debug] [2022-11-27T14:20:16.992Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273 [none]
+[debug] [2022-11-27T14:20:17.634Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273 200
+[debug] [2022-11-27T14:20:17.634Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273 {"projectId":"qwith-98273","projectNumber":"649334180242","displayName":"Qwith","name":"projects/qwith-98273","resources":{"hostingSite":"qwith-98273","storageBucket":"qwith-98273.appspot.com","locationId":"asia-northeast1"},"state":"ACTIVE","etag":"1_7d8d9ef9-057d-4f7d-89ac-11e7411ce143"}
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2022-11-27T14:20:17.636Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/cloudfunctions.googleapis.com [none]
+[debug] [2022-11-27T14:20:17.636Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/qwith-98273
+[debug] [2022-11-27T14:20:17.638Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/runtimeconfig.googleapis.com [none]
+[debug] [2022-11-27T14:20:17.639Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/qwith-98273
+[debug] [2022-11-27T14:20:17.640Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/cloudbuild.googleapis.com [none]
+[debug] [2022-11-27T14:20:17.640Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/cloudbuild.googleapis.com x-goog-quota-user=projects/qwith-98273
+[debug] [2022-11-27T14:20:17.641Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/artifactregistry.googleapis.com [none]
+[debug] [2022-11-27T14:20:17.641Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/artifactregistry.googleapis.com x-goog-quota-user=projects/qwith-98273
+[debug] [2022-11-27T14:20:18.865Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/runtimeconfig.googleapis.com 200
+[debug] [2022-11-27T14:20:18.865Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2022-11-27T14:20:18.867Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/cloudfunctions.googleapis.com 200
+[debug] [2022-11-27T14:20:18.867Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2022-11-27T14:20:18.869Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/artifactregistry.googleapis.com 200
+[debug] [2022-11-27T14:20:18.869Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2022-11-27T14:20:18.870Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/cloudbuild.googleapis.com 200
+[debug] [2022-11-27T14:20:18.870Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2022-11-27T14:20:18.871Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273/adminSdkConfig [none]
+[debug] [2022-11-27T14:20:19.168Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273/adminSdkConfig 200
+[debug] [2022-11-27T14:20:19.168Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273/adminSdkConfig {"projectId":"qwith-98273","storageBucket":"qwith-98273.appspot.com","locationId":"asia-northeast1"}
+[debug] [2022-11-27T14:20:19.169Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/qwith-98273/configs [none]
+[debug] [2022-11-27T14:20:19.681Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/qwith-98273/configs 200
+[debug] [2022-11-27T14:20:19.682Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/qwith-98273/configs {}
+[info] i  functions: preparing codebase default for deployment 
+[debug] [2022-11-27T14:20:19.684Z] Validating nodejs source
+[warn] ⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] ⚠  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2022-11-27T14:20:20.320Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^0.2.0",
+    "typescript": "^4.5.4"
+  },
+  "private": true
+}
+[debug] [2022-11-27T14:20:20.320Z] Building nodejs source
+[debug] [2022-11-27T14:20:20.321Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-27T14:20:20.432Z] Serving at port 9005
+
+[debug] [2022-11-27T14:20:20.464Z] Got response from /__/functions.yaml {"endpoints":{"getRoomIdWithPin":{"platform":"gcfv1","labels":{},"callableTrigger":{},"entryPoint":"getRoomIdWithPin"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-27T14:20:20.468Z] shutdown requested via /__/quitquitquit
+
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged /Users/yhakamay/Development/qwith/functions (51.93 KB) for uploading 
+[debug] [2022-11-27T14:20:20.489Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/-/functions [none]
+[debug] [2022-11-27T14:20:21.338Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/-/functions 200
+[debug] [2022-11-27T14:20:21.339Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/-/functions {"functions":[{"name":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","httpsTrigger":{"url":"https://us-central1-qwith-98273.cloudfunctions.net/getRoomIdWithPin","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"getRoomIdWithPin","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"qwith-98273@appspot.gserviceaccount.com","updateTime":"2022-11-27T14:11:17.247Z","versionId":"1","labels":{"deployment-tool":"cli-firebase","deployment-callable":"true","firebase-functions-hash":"b8ed2efb5e17ad75a19a8ec09fbf3932a00de61f"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/87a3a466-eebc-41b9-b967-6313ff749f6d.zip","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"qwith-98273\",\"storageBucket\":\"qwith-98273.appspot.com\",\"locationId\":\"asia-northeast1\"}","GCLOUD_PROJECT":"qwith-98273","EVENTARC_CLOUD_EVENT_SOURCE":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","buildName":"projects/649334180242/locations/us-central1/builds/7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","dockerRegistry":"ARTIFACT_REGISTRY"}]}
+[debug] [2022-11-27T14:20:21.341Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/qwith-98273/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2022-11-27T14:20:22.753Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/qwith-98273/locations/-/functions 200
+[debug] [2022-11-27T14:20:22.754Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/qwith-98273/locations/-/functions {}
+[debug] [2022-11-27T14:20:22.762Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273 [none]
+[debug] [2022-11-27T14:20:24.390Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273 200
+[debug] [2022-11-27T14:20:24.390Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273 {"projectId":"qwith-98273","projectNumber":"649334180242","displayName":"Qwith","name":"projects/qwith-98273","resources":{"hostingSite":"qwith-98273","storageBucket":"qwith-98273.appspot.com","locationId":"asia-northeast1"},"state":"ACTIVE","etag":"1_7d8d9ef9-057d-4f7d-89ac-11e7411ce143"}
+[debug] [2022-11-27T14:20:24.393Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2022-11-27T14:20:24.393Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/us-central1/functions:generateUploadUrl {}
+[debug] [2022-11-27T14:20:25.046Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2022-11-27T14:20:25.046Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/5e46f787-fcad-402d-a658-3a0c452c1163.zip?GoogleAccessId=service-649334180242@gcf-admin-robot.iam.gserviceaccount.com&Expires=1669560625&Signature=K3CHOGSEb5Oy41w2mxFi4CnH2wIQ3S6ieUAPl8waM7g0dKy%2FKbujHpZ88CigSHVfI4%2B%2FTtYOFqL10qit40us9ZNltXJnLHKUigNDG0cmj8QFSe2%2B4G97kN4SdATEsFeePtWHXJFqetMlzc8%2FHHWYgpMzSFAGDtcW49TeulPsINp26BkICjVDhi6%2FnUwU%2FoNIFgRT90aQ7wO2kYjqN2OdnBjCCO45%2BcE5kqhYMOoMKut2SM1uiGQKDeRC8IlHxLKYf7NF%2BVHF6LNt1bJK66CLI5jPFz5boqkHN4Tmp%2BVkkTC%2FbU45wQFaOig8%2BreAqCx%2B4RUhaZfz1byW%2Bglb60V%2FtA%3D%3D"}
+[debug] [2022-11-27T14:20:25.047Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/5e46f787-fcad-402d-a658-3a0c452c1163.zip GoogleAccessId=service-649334180242%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1669560625&Signature=K3CHOGSEb5Oy41w2mxFi4CnH2wIQ3S6ieUAPl8waM7g0dKy%2FKbujHpZ88CigSHVfI4%2B%2FTtYOFqL10qit40us9ZNltXJnLHKUigNDG0cmj8QFSe2%2B4G97kN4SdATEsFeePtWHXJFqetMlzc8%2FHHWYgpMzSFAGDtcW49TeulPsINp26BkICjVDhi6%2FnUwU%2FoNIFgRT90aQ7wO2kYjqN2OdnBjCCO45%2BcE5kqhYMOoMKut2SM1uiGQKDeRC8IlHxLKYf7NF%2BVHF6LNt1bJK66CLI5jPFz5boqkHN4Tmp%2BVkkTC%2FbU45wQFaOig8%2BreAqCx%2B4RUhaZfz1byW%2Bglb60V%2FtA%3D%3D
+[debug] [2022-11-27T14:20:25.047Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/5e46f787-fcad-402d-a658-3a0c452c1163.zip [stream]
+[debug] [2022-11-27T14:20:25.516Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/5e46f787-fcad-402d-a658-3a0c452c1163.zip 200
+[debug] [2022-11-27T14:20:25.516Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/5e46f787-fcad-402d-a658-3a0c452c1163.zip [omitted]
+[info] ✔  functions: functions folder uploaded successfully 
+[info] i  functions: updating Node.js 16 function getRoomIdWithPin(us-central1)... 
+[debug] [2022-11-27T14:20:25.523Z] >>> [apiv2][query] PATCH https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin updateMask=name%2CsourceUploadUrl%2CentryPoint%2Cruntime%2CdockerRegistry%2Clabels%2ChttpsTrigger.securityLevel%2CenvironmentVariables%2CavailableMemoryMb%2CsourceToken
+[debug] [2022-11-27T14:20:25.523Z] >>> [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin {"name":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","sourceUploadUrl":"https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/5e46f787-fcad-402d-a658-3a0c452c1163.zip?GoogleAccessId=service-649334180242@gcf-admin-robot.iam.gserviceaccount.com&Expires=1669560625&Signature=K3CHOGSEb5Oy41w2mxFi4CnH2wIQ3S6ieUAPl8waM7g0dKy%2FKbujHpZ88CigSHVfI4%2B%2FTtYOFqL10qit40us9ZNltXJnLHKUigNDG0cmj8QFSe2%2B4G97kN4SdATEsFeePtWHXJFqetMlzc8%2FHHWYgpMzSFAGDtcW49TeulPsINp26BkICjVDhi6%2FnUwU%2FoNIFgRT90aQ7wO2kYjqN2OdnBjCCO45%2BcE5kqhYMOoMKut2SM1uiGQKDeRC8IlHxLKYf7NF%2BVHF6LNt1bJK66CLI5jPFz5boqkHN4Tmp%2BVkkTC%2FbU45wQFaOig8%2BreAqCx%2B4RUhaZfz1byW%2Bglb60V%2FtA%3D%3D","entryPoint":"getRoomIdWithPin","runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","deployment-callable":"true","firebase-functions-hash":"03e90bf5f605e78d61486dfe26a56f78b1610307"},"httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"qwith-98273\",\"storageBucket\":\"qwith-98273.appspot.com\",\"locationId\":\"asia-northeast1\"}","GCLOUD_PROJECT":"qwith-98273","EVENTARC_CLOUD_EVENT_SOURCE":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin"},"availableMemoryMb":256}
+[debug] [2022-11-27T14:20:26.152Z] <<< [apiv2][status] PATCH https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin 200
+[debug] [2022-11-27T14:20:26.152Z] <<< [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin {"name":"operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","type":"UPDATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","httpsTrigger":{"url":"https://us-central1-qwith-98273.cloudfunctions.net/getRoomIdWithPin","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"getRoomIdWithPin","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"qwith-98273@appspot.gserviceaccount.com","updateTime":"2022-11-27T14:11:17.247Z","versionId":"1","labels":{"deployment-tool":"cli-firebase","deployment-callable":"true","firebase-functions-hash":"03e90bf5f605e78d61486dfe26a56f78b1610307"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/5e46f787-fcad-402d-a658-3a0c452c1163.zip?GoogleAccessId=service-649334180242@gcf-admin-robot.iam.gserviceaccount.com&Expires=1669560625&Signature=K3CHOGSEb5Oy41w2mxFi4CnH2wIQ3S6ieUAPl8waM7g0dKy%2FKbujHpZ88CigSHVfI4%2B%2FTtYOFqL10qit40us9ZNltXJnLHKUigNDG0cmj8QFSe2%2B4G97kN4SdATEsFeePtWHXJFqetMlzc8%2FHHWYgpMzSFAGDtcW49TeulPsINp26BkICjVDhi6%2FnUwU%2FoNIFgRT90aQ7wO2kYjqN2OdnBjCCO45%2BcE5kqhYMOoMKut2SM1uiGQKDeRC8IlHxLKYf7NF%2BVHF6LNt1bJK66CLI5jPFz5boqkHN4Tmp%2BVkkTC%2FbU45wQFaOig8%2BreAqCx%2B4RUhaZfz1byW%2Bglb60V%2FtA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"qwith-98273\",\"storageBucket\":\"qwith-98273.appspot.com\",\"locationId\":\"asia-northeast1\"}","GCLOUD_PROJECT":"qwith-98273","EVENTARC_CLOUD_EVENT_SOURCE":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","buildName":"projects/649334180242/locations/us-central1/builds/7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"2","updateTime":"2022-11-27T14:20:26Z"}}
+[debug] [2022-11-27T14:20:26.153Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA [none]
+[debug] [2022-11-27T14:20:26.526Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA 200
+[debug] [2022-11-27T14:20:26.526Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA {"name":"operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","type":"UPDATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","httpsTrigger":{"url":"https://us-central1-qwith-98273.cloudfunctions.net/getRoomIdWithPin","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"getRoomIdWithPin","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"qwith-98273@appspot.gserviceaccount.com","updateTime":"2022-11-27T14:11:17.247Z","versionId":"1","labels":{"deployment-tool":"cli-firebase","deployment-callable":"true","firebase-functions-hash":"03e90bf5f605e78d61486dfe26a56f78b1610307"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/5e46f787-fcad-402d-a658-3a0c452c1163.zip?GoogleAccessId=service-649334180242@gcf-admin-robot.iam.gserviceaccount.com&Expires=1669560625&Signature=K3CHOGSEb5Oy41w2mxFi4CnH2wIQ3S6ieUAPl8waM7g0dKy%2FKbujHpZ88CigSHVfI4%2B%2FTtYOFqL10qit40us9ZNltXJnLHKUigNDG0cmj8QFSe2%2B4G97kN4SdATEsFeePtWHXJFqetMlzc8%2FHHWYgpMzSFAGDtcW49TeulPsINp26BkICjVDhi6%2FnUwU%2FoNIFgRT90aQ7wO2kYjqN2OdnBjCCO45%2BcE5kqhYMOoMKut2SM1uiGQKDeRC8IlHxLKYf7NF%2BVHF6LNt1bJK66CLI5jPFz5boqkHN4Tmp%2BVkkTC%2FbU45wQFaOig8%2BreAqCx%2B4RUhaZfz1byW%2Bglb60V%2FtA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"qwith-98273\",\"storageBucket\":\"qwith-98273.appspot.com\",\"locationId\":\"asia-northeast1\"}","GCLOUD_PROJECT":"qwith-98273","EVENTARC_CLOUD_EVENT_SOURCE":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","buildName":"projects/649334180242/locations/us-central1/builds/7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"2","updateTime":"2022-11-27T14:20:26Z"}}
+[debug] [2022-11-27T14:20:27.028Z] [update-default-us-central1-getRoomIdWithPin] Retrying task index 0
+[debug] [2022-11-27T14:20:27.028Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA [none]
+[debug] [2022-11-27T14:20:27.396Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA 200
+[debug] [2022-11-27T14:20:27.396Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA {"name":"operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","type":"UPDATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","httpsTrigger":{"url":"https://us-central1-qwith-98273.cloudfunctions.net/getRoomIdWithPin","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"getRoomIdWithPin","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"qwith-98273@appspot.gserviceaccount.com","updateTime":"2022-11-27T14:11:17.247Z","versionId":"1","labels":{"deployment-tool":"cli-firebase","deployment-callable":"true","firebase-functions-hash":"03e90bf5f605e78d61486dfe26a56f78b1610307"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/5e46f787-fcad-402d-a658-3a0c452c1163.zip?GoogleAccessId=service-649334180242@gcf-admin-robot.iam.gserviceaccount.com&Expires=1669560625&Signature=K3CHOGSEb5Oy41w2mxFi4CnH2wIQ3S6ieUAPl8waM7g0dKy%2FKbujHpZ88CigSHVfI4%2B%2FTtYOFqL10qit40us9ZNltXJnLHKUigNDG0cmj8QFSe2%2B4G97kN4SdATEsFeePtWHXJFqetMlzc8%2FHHWYgpMzSFAGDtcW49TeulPsINp26BkICjVDhi6%2FnUwU%2FoNIFgRT90aQ7wO2kYjqN2OdnBjCCO45%2BcE5kqhYMOoMKut2SM1uiGQKDeRC8IlHxLKYf7NF%2BVHF6LNt1bJK66CLI5jPFz5boqkHN4Tmp%2BVkkTC%2FbU45wQFaOig8%2BreAqCx%2B4RUhaZfz1byW%2Bglb60V%2FtA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"qwith-98273\",\"storageBucket\":\"qwith-98273.appspot.com\",\"locationId\":\"asia-northeast1\"}","GCLOUD_PROJECT":"qwith-98273","EVENTARC_CLOUD_EVENT_SOURCE":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","buildName":"projects/649334180242/locations/us-central1/builds/7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"2","updateTime":"2022-11-27T14:20:26Z","buildId":"4e143bbe-ff00-4d77-a6bb-168b12c284ef","buildName":"projects/649334180242/locations/us-central1/builds/4e143bbe-ff00-4d77-a6bb-168b12c284ef"}}
+[debug] [2022-11-27T14:20:28.397Z] [update-default-us-central1-getRoomIdWithPin] Retrying task index 0
+[debug] [2022-11-27T14:20:28.398Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA [none]
+[debug] [2022-11-27T14:20:28.696Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA 200
+[debug] [2022-11-27T14:20:28.697Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA {"name":"operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","type":"UPDATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","httpsTrigger":{"url":"https://us-central1-qwith-98273.cloudfunctions.net/getRoomIdWithPin","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"getRoomIdWithPin","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"qwith-98273@appspot.gserviceaccount.com","updateTime":"2022-11-27T14:11:17.247Z","versionId":"1","labels":{"deployment-tool":"cli-firebase","deployment-callable":"true","firebase-functions-hash":"03e90bf5f605e78d61486dfe26a56f78b1610307"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/5e46f787-fcad-402d-a658-3a0c452c1163.zip?GoogleAccessId=service-649334180242@gcf-admin-robot.iam.gserviceaccount.com&Expires=1669560625&Signature=K3CHOGSEb5Oy41w2mxFi4CnH2wIQ3S6ieUAPl8waM7g0dKy%2FKbujHpZ88CigSHVfI4%2B%2FTtYOFqL10qit40us9ZNltXJnLHKUigNDG0cmj8QFSe2%2B4G97kN4SdATEsFeePtWHXJFqetMlzc8%2FHHWYgpMzSFAGDtcW49TeulPsINp26BkICjVDhi6%2FnUwU%2FoNIFgRT90aQ7wO2kYjqN2OdnBjCCO45%2BcE5kqhYMOoMKut2SM1uiGQKDeRC8IlHxLKYf7NF%2BVHF6LNt1bJK66CLI5jPFz5boqkHN4Tmp%2BVkkTC%2FbU45wQFaOig8%2BreAqCx%2B4RUhaZfz1byW%2Bglb60V%2FtA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"qwith-98273\",\"storageBucket\":\"qwith-98273.appspot.com\",\"locationId\":\"asia-northeast1\"}","GCLOUD_PROJECT":"qwith-98273","EVENTARC_CLOUD_EVENT_SOURCE":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","buildName":"projects/649334180242/locations/us-central1/builds/7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"2","updateTime":"2022-11-27T14:20:26Z","buildId":"4e143bbe-ff00-4d77-a6bb-168b12c284ef","buildName":"projects/649334180242/locations/us-central1/builds/4e143bbe-ff00-4d77-a6bb-168b12c284ef"}}
+[debug] [2022-11-27T14:20:30.698Z] [update-default-us-central1-getRoomIdWithPin] Retrying task index 0
+[debug] [2022-11-27T14:20:30.698Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA [none]
+[debug] [2022-11-27T14:20:31.019Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA 200
+[debug] [2022-11-27T14:20:31.019Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA {"name":"operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","type":"UPDATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","httpsTrigger":{"url":"https://us-central1-qwith-98273.cloudfunctions.net/getRoomIdWithPin","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"getRoomIdWithPin","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"qwith-98273@appspot.gserviceaccount.com","updateTime":"2022-11-27T14:11:17.247Z","versionId":"1","labels":{"deployment-tool":"cli-firebase","deployment-callable":"true","firebase-functions-hash":"03e90bf5f605e78d61486dfe26a56f78b1610307"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/5e46f787-fcad-402d-a658-3a0c452c1163.zip?GoogleAccessId=service-649334180242@gcf-admin-robot.iam.gserviceaccount.com&Expires=1669560625&Signature=K3CHOGSEb5Oy41w2mxFi4CnH2wIQ3S6ieUAPl8waM7g0dKy%2FKbujHpZ88CigSHVfI4%2B%2FTtYOFqL10qit40us9ZNltXJnLHKUigNDG0cmj8QFSe2%2B4G97kN4SdATEsFeePtWHXJFqetMlzc8%2FHHWYgpMzSFAGDtcW49TeulPsINp26BkICjVDhi6%2FnUwU%2FoNIFgRT90aQ7wO2kYjqN2OdnBjCCO45%2BcE5kqhYMOoMKut2SM1uiGQKDeRC8IlHxLKYf7NF%2BVHF6LNt1bJK66CLI5jPFz5boqkHN4Tmp%2BVkkTC%2FbU45wQFaOig8%2BreAqCx%2B4RUhaZfz1byW%2Bglb60V%2FtA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"qwith-98273\",\"storageBucket\":\"qwith-98273.appspot.com\",\"locationId\":\"asia-northeast1\"}","GCLOUD_PROJECT":"qwith-98273","EVENTARC_CLOUD_EVENT_SOURCE":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","buildName":"projects/649334180242/locations/us-central1/builds/7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"2","updateTime":"2022-11-27T14:20:26Z","buildId":"4e143bbe-ff00-4d77-a6bb-168b12c284ef","buildName":"projects/649334180242/locations/us-central1/builds/4e143bbe-ff00-4d77-a6bb-168b12c284ef"}}
+[debug] [2022-11-27T14:20:35.021Z] [update-default-us-central1-getRoomIdWithPin] Retrying task index 0
+[debug] [2022-11-27T14:20:35.025Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA [none]
+[debug] [2022-11-27T14:20:35.310Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA 200
+[debug] [2022-11-27T14:20:35.310Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA {"name":"operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","type":"UPDATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","httpsTrigger":{"url":"https://us-central1-qwith-98273.cloudfunctions.net/getRoomIdWithPin","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"getRoomIdWithPin","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"qwith-98273@appspot.gserviceaccount.com","updateTime":"2022-11-27T14:11:17.247Z","versionId":"1","labels":{"deployment-tool":"cli-firebase","deployment-callable":"true","firebase-functions-hash":"03e90bf5f605e78d61486dfe26a56f78b1610307"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/5e46f787-fcad-402d-a658-3a0c452c1163.zip?GoogleAccessId=service-649334180242@gcf-admin-robot.iam.gserviceaccount.com&Expires=1669560625&Signature=K3CHOGSEb5Oy41w2mxFi4CnH2wIQ3S6ieUAPl8waM7g0dKy%2FKbujHpZ88CigSHVfI4%2B%2FTtYOFqL10qit40us9ZNltXJnLHKUigNDG0cmj8QFSe2%2B4G97kN4SdATEsFeePtWHXJFqetMlzc8%2FHHWYgpMzSFAGDtcW49TeulPsINp26BkICjVDhi6%2FnUwU%2FoNIFgRT90aQ7wO2kYjqN2OdnBjCCO45%2BcE5kqhYMOoMKut2SM1uiGQKDeRC8IlHxLKYf7NF%2BVHF6LNt1bJK66CLI5jPFz5boqkHN4Tmp%2BVkkTC%2FbU45wQFaOig8%2BreAqCx%2B4RUhaZfz1byW%2Bglb60V%2FtA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"qwith-98273\",\"storageBucket\":\"qwith-98273.appspot.com\",\"locationId\":\"asia-northeast1\"}","GCLOUD_PROJECT":"qwith-98273","EVENTARC_CLOUD_EVENT_SOURCE":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","buildName":"projects/649334180242/locations/us-central1/builds/7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"2","updateTime":"2022-11-27T14:20:26Z","buildId":"4e143bbe-ff00-4d77-a6bb-168b12c284ef","buildName":"projects/649334180242/locations/us-central1/builds/4e143bbe-ff00-4d77-a6bb-168b12c284ef"}}
+[debug] [2022-11-27T14:20:43.311Z] [update-default-us-central1-getRoomIdWithPin] Retrying task index 0
+[debug] [2022-11-27T14:20:43.312Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA [none]
+[debug] [2022-11-27T14:20:43.846Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA 200
+[debug] [2022-11-27T14:20:43.847Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA {"name":"operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","type":"UPDATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","httpsTrigger":{"url":"https://us-central1-qwith-98273.cloudfunctions.net/getRoomIdWithPin","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"getRoomIdWithPin","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"qwith-98273@appspot.gserviceaccount.com","updateTime":"2022-11-27T14:11:17.247Z","versionId":"1","labels":{"deployment-tool":"cli-firebase","deployment-callable":"true","firebase-functions-hash":"03e90bf5f605e78d61486dfe26a56f78b1610307"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/5e46f787-fcad-402d-a658-3a0c452c1163.zip?GoogleAccessId=service-649334180242@gcf-admin-robot.iam.gserviceaccount.com&Expires=1669560625&Signature=K3CHOGSEb5Oy41w2mxFi4CnH2wIQ3S6ieUAPl8waM7g0dKy%2FKbujHpZ88CigSHVfI4%2B%2FTtYOFqL10qit40us9ZNltXJnLHKUigNDG0cmj8QFSe2%2B4G97kN4SdATEsFeePtWHXJFqetMlzc8%2FHHWYgpMzSFAGDtcW49TeulPsINp26BkICjVDhi6%2FnUwU%2FoNIFgRT90aQ7wO2kYjqN2OdnBjCCO45%2BcE5kqhYMOoMKut2SM1uiGQKDeRC8IlHxLKYf7NF%2BVHF6LNt1bJK66CLI5jPFz5boqkHN4Tmp%2BVkkTC%2FbU45wQFaOig8%2BreAqCx%2B4RUhaZfz1byW%2Bglb60V%2FtA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"qwith-98273\",\"storageBucket\":\"qwith-98273.appspot.com\",\"locationId\":\"asia-northeast1\"}","GCLOUD_PROJECT":"qwith-98273","EVENTARC_CLOUD_EVENT_SOURCE":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","buildName":"projects/649334180242/locations/us-central1/builds/7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"2","updateTime":"2022-11-27T14:20:26Z","buildId":"4e143bbe-ff00-4d77-a6bb-168b12c284ef","buildName":"projects/649334180242/locations/us-central1/builds/4e143bbe-ff00-4d77-a6bb-168b12c284ef"}}
+[debug] [2022-11-27T14:20:53.848Z] [update-default-us-central1-getRoomIdWithPin] Retrying task index 0
+[debug] [2022-11-27T14:20:53.848Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA [none]
+[debug] [2022-11-27T14:20:54.292Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA 200
+[debug] [2022-11-27T14:20:54.292Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA {"name":"operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","type":"UPDATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","httpsTrigger":{"url":"https://us-central1-qwith-98273.cloudfunctions.net/getRoomIdWithPin","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"getRoomIdWithPin","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"qwith-98273@appspot.gserviceaccount.com","updateTime":"2022-11-27T14:11:17.247Z","versionId":"1","labels":{"deployment-tool":"cli-firebase","deployment-callable":"true","firebase-functions-hash":"03e90bf5f605e78d61486dfe26a56f78b1610307"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/5e46f787-fcad-402d-a658-3a0c452c1163.zip?GoogleAccessId=service-649334180242@gcf-admin-robot.iam.gserviceaccount.com&Expires=1669560625&Signature=K3CHOGSEb5Oy41w2mxFi4CnH2wIQ3S6ieUAPl8waM7g0dKy%2FKbujHpZ88CigSHVfI4%2B%2FTtYOFqL10qit40us9ZNltXJnLHKUigNDG0cmj8QFSe2%2B4G97kN4SdATEsFeePtWHXJFqetMlzc8%2FHHWYgpMzSFAGDtcW49TeulPsINp26BkICjVDhi6%2FnUwU%2FoNIFgRT90aQ7wO2kYjqN2OdnBjCCO45%2BcE5kqhYMOoMKut2SM1uiGQKDeRC8IlHxLKYf7NF%2BVHF6LNt1bJK66CLI5jPFz5boqkHN4Tmp%2BVkkTC%2FbU45wQFaOig8%2BreAqCx%2B4RUhaZfz1byW%2Bglb60V%2FtA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"qwith-98273\",\"storageBucket\":\"qwith-98273.appspot.com\",\"locationId\":\"asia-northeast1\"}","GCLOUD_PROJECT":"qwith-98273","EVENTARC_CLOUD_EVENT_SOURCE":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","buildName":"projects/649334180242/locations/us-central1/builds/7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"2","updateTime":"2022-11-27T14:20:26Z","buildId":"4e143bbe-ff00-4d77-a6bb-168b12c284ef","buildName":"projects/649334180242/locations/us-central1/builds/4e143bbe-ff00-4d77-a6bb-168b12c284ef"}}
+[debug] [2022-11-27T14:21:04.294Z] [update-default-us-central1-getRoomIdWithPin] Retrying task index 0
+[debug] [2022-11-27T14:21:04.295Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA [none]
+[debug] [2022-11-27T14:21:04.801Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA 200
+[debug] [2022-11-27T14:21:04.801Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA {"name":"operations/cXdpdGgtOTgyNzMvdXMtY2VudHJhbDEvZ2V0Um9vbUlkV2l0aFBpbi9uYkppVmxINkx0NA","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","type":"UPDATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","httpsTrigger":{"url":"https://us-central1-qwith-98273.cloudfunctions.net/getRoomIdWithPin","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"getRoomIdWithPin","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"qwith-98273@appspot.gserviceaccount.com","updateTime":"2022-11-27T14:11:17.247Z","versionId":"1","labels":{"deployment-tool":"cli-firebase","deployment-callable":"true","firebase-functions-hash":"03e90bf5f605e78d61486dfe26a56f78b1610307"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/5e46f787-fcad-402d-a658-3a0c452c1163.zip?GoogleAccessId=service-649334180242@gcf-admin-robot.iam.gserviceaccount.com&Expires=1669560625&Signature=K3CHOGSEb5Oy41w2mxFi4CnH2wIQ3S6ieUAPl8waM7g0dKy%2FKbujHpZ88CigSHVfI4%2B%2FTtYOFqL10qit40us9ZNltXJnLHKUigNDG0cmj8QFSe2%2B4G97kN4SdATEsFeePtWHXJFqetMlzc8%2FHHWYgpMzSFAGDtcW49TeulPsINp26BkICjVDhi6%2FnUwU%2FoNIFgRT90aQ7wO2kYjqN2OdnBjCCO45%2BcE5kqhYMOoMKut2SM1uiGQKDeRC8IlHxLKYf7NF%2BVHF6LNt1bJK66CLI5jPFz5boqkHN4Tmp%2BVkkTC%2FbU45wQFaOig8%2BreAqCx%2B4RUhaZfz1byW%2Bglb60V%2FtA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"qwith-98273\",\"storageBucket\":\"qwith-98273.appspot.com\",\"locationId\":\"asia-northeast1\"}","GCLOUD_PROJECT":"qwith-98273","EVENTARC_CLOUD_EVENT_SOURCE":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","buildName":"projects/649334180242/locations/us-central1/builds/7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"2","updateTime":"2022-11-27T14:20:26Z","buildId":"4e143bbe-ff00-4d77-a6bb-168b12c284ef","buildName":"projects/649334180242/locations/us-central1/builds/4e143bbe-ff00-4d77-a6bb-168b12c284ef"}}
+[debug] [2022-11-27T14:21:12.914Z] ----------------------------------------------------------------------
+[debug] [2022-11-27T14:21:12.916Z] Command:       /opt/homebrew/Cellar/node/19.1.0/bin/node /opt/homebrew/bin/firebase deploy --only functions
+[debug] [2022-11-27T14:21:12.916Z] CLI Version:   11.16.1
+[debug] [2022-11-27T14:21:12.916Z] Platform:      darwin
+[debug] [2022-11-27T14:21:12.916Z] Node Version:  v19.1.0
+[debug] [2022-11-27T14:21:12.916Z] Time:          Sun Nov 27 2022 23:21:12 GMT+0900 (Japan Standard Time)
+[debug] [2022-11-27T14:21:12.916Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-11-27T14:21:12.949Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-11-27T14:21:12.949Z] > authorizing via signed-in user (yhakamaya1031@gmail.com)
+[debug] [2022-11-27T14:21:12.949Z] [iam] checking project qwith-98273 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2022-11-27T14:21:12.950Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/qwith-98273:testIamPermissions [none]
+[debug] [2022-11-27T14:21:12.950Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/qwith-98273:testIamPermissions x-goog-quota-user=projects/qwith-98273
+[debug] [2022-11-27T14:21:12.950Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/qwith-98273:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2022-11-27T14:21:13.764Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/qwith-98273:testIamPermissions 200
+[debug] [2022-11-27T14:21:13.764Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/qwith-98273:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2022-11-27T14:21:13.764Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/qwith-98273/serviceAccounts/qwith-98273@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2022-11-27T14:21:13.764Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/qwith-98273/serviceAccounts/qwith-98273@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2022-11-27T14:21:14.511Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/qwith-98273/serviceAccounts/qwith-98273@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2022-11-27T14:21:14.511Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/qwith-98273/serviceAccounts/qwith-98273@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'qwith-98273'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] Running command: npm --prefix "$RESOURCE_DIR" run build
+[info] ✔  functions: Finished running predeploy script. 
+[debug] [2022-11-27T14:21:18.527Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273 [none]
+[debug] [2022-11-27T14:21:18.899Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273 200
+[debug] [2022-11-27T14:21:18.900Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273 {"projectId":"qwith-98273","projectNumber":"649334180242","displayName":"Qwith","name":"projects/qwith-98273","resources":{"hostingSite":"qwith-98273","storageBucket":"qwith-98273.appspot.com","locationId":"asia-northeast1"},"state":"ACTIVE","etag":"1_7d8d9ef9-057d-4f7d-89ac-11e7411ce143"}
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2022-11-27T14:21:18.902Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/cloudfunctions.googleapis.com [none]
+[debug] [2022-11-27T14:21:18.902Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/qwith-98273
+[debug] [2022-11-27T14:21:18.904Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/runtimeconfig.googleapis.com [none]
+[debug] [2022-11-27T14:21:18.904Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/qwith-98273
+[debug] [2022-11-27T14:21:18.905Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/cloudbuild.googleapis.com [none]
+[debug] [2022-11-27T14:21:18.906Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/cloudbuild.googleapis.com x-goog-quota-user=projects/qwith-98273
+[debug] [2022-11-27T14:21:18.907Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/artifactregistry.googleapis.com [none]
+[debug] [2022-11-27T14:21:18.907Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/artifactregistry.googleapis.com x-goog-quota-user=projects/qwith-98273
+[debug] [2022-11-27T14:21:20.014Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/cloudfunctions.googleapis.com 200
+[debug] [2022-11-27T14:21:20.014Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2022-11-27T14:21:20.022Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/runtimeconfig.googleapis.com 200
+[debug] [2022-11-27T14:21:20.022Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2022-11-27T14:21:20.046Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/cloudbuild.googleapis.com 200
+[debug] [2022-11-27T14:21:20.046Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2022-11-27T14:21:20.047Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/artifactregistry.googleapis.com 200
+[debug] [2022-11-27T14:21:20.047Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/qwith-98273/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2022-11-27T14:21:20.047Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273/adminSdkConfig [none]
+[debug] [2022-11-27T14:21:20.345Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273/adminSdkConfig 200
+[debug] [2022-11-27T14:21:20.346Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273/adminSdkConfig {"projectId":"qwith-98273","storageBucket":"qwith-98273.appspot.com","locationId":"asia-northeast1"}
+[debug] [2022-11-27T14:21:20.347Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/qwith-98273/configs [none]
+[debug] [2022-11-27T14:21:21.631Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/qwith-98273/configs 200
+[debug] [2022-11-27T14:21:21.631Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/qwith-98273/configs {}
+[info] i  functions: preparing codebase default for deployment 
+[debug] [2022-11-27T14:21:21.632Z] Validating nodejs source
+[warn] ⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] ⚠  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2022-11-27T14:21:22.337Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^0.2.0",
+    "typescript": "^4.5.4"
+  },
+  "private": true
+}
+[debug] [2022-11-27T14:21:22.337Z] Building nodejs source
+[debug] [2022-11-27T14:21:22.338Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-11-27T14:21:22.450Z] Serving at port 9005
+
+[debug] [2022-11-27T14:21:22.480Z] Got response from /__/functions.yaml {"endpoints":{"getRoomIdWithPin":{"platform":"gcfv1","labels":{},"callableTrigger":{},"entryPoint":"getRoomIdWithPin"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-11-27T14:21:22.484Z] shutdown requested via /__/quitquitquit
+
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged /Users/yhakamay/Development/qwith/functions (51.98 KB) for uploading 
+[debug] [2022-11-27T14:21:22.505Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/-/functions [none]
+[debug] [2022-11-27T14:21:23.199Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/-/functions 200
+[debug] [2022-11-27T14:21:23.199Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/-/functions {"functions":[{"name":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","httpsTrigger":{"url":"https://us-central1-qwith-98273.cloudfunctions.net/getRoomIdWithPin","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"getRoomIdWithPin","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"qwith-98273@appspot.gserviceaccount.com","updateTime":"2022-11-27T14:11:17.247Z","versionId":"1","labels":{"deployment-tool":"cli-firebase","deployment-callable":"true","firebase-functions-hash":"b8ed2efb5e17ad75a19a8ec09fbf3932a00de61f"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/87a3a466-eebc-41b9-b967-6313ff749f6d.zip","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"qwith-98273\",\"storageBucket\":\"qwith-98273.appspot.com\",\"locationId\":\"asia-northeast1\"}","GCLOUD_PROJECT":"qwith-98273","EVENTARC_CLOUD_EVENT_SOURCE":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","buildName":"projects/649334180242/locations/us-central1/builds/7441c95d-d67c-4ea9-a6e0-1e4f007b1b16","dockerRegistry":"ARTIFACT_REGISTRY"}]}
+[debug] [2022-11-27T14:21:23.202Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/qwith-98273/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2022-11-27T14:21:24.532Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/qwith-98273/locations/-/functions 200
+[debug] [2022-11-27T14:21:24.533Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/qwith-98273/locations/-/functions {}
+[debug] [2022-11-27T14:21:24.540Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273 [none]
+[debug] [2022-11-27T14:21:24.857Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273 200
+[debug] [2022-11-27T14:21:24.857Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/qwith-98273 {"projectId":"qwith-98273","projectNumber":"649334180242","displayName":"Qwith","name":"projects/qwith-98273","resources":{"hostingSite":"qwith-98273","storageBucket":"qwith-98273.appspot.com","locationId":"asia-northeast1"},"state":"ACTIVE","etag":"1_7d8d9ef9-057d-4f7d-89ac-11e7411ce143"}
+[debug] [2022-11-27T14:21:24.860Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2022-11-27T14:21:24.860Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/us-central1/functions:generateUploadUrl {}
+[debug] [2022-11-27T14:21:25.477Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2022-11-27T14:21:25.478Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/2ed23396-f37b-4bc6-9987-6af9bac3445e.zip?GoogleAccessId=service-649334180242@gcf-admin-robot.iam.gserviceaccount.com&Expires=1669560685&Signature=a%2FUXKBlWFeUKkU5iWzxjmuAS5W4IwXsypOddgUmkqWDHUnccUEiVTd7FGQ7Gu5a7FylDrMGSBwSdJWlo7qCHEnn%2BM1V7wxvIPcqISckY9aM%2FcSJsaCPxrYFOfRXu%2F3S5rpYHg5yRyfZCSfqK1qkBFo4uzWaAC6i4Qt8Y8CtOd8Zz4Z83n0M7y87obP57DLY%2F5oqH2WMesnZJyNfqr%2B4JxjmFWaZQ0qrlBCm4ahaMvATKvYildw3dreEsVKkfrWtjw7H7dXE0iKEDr9l4KxfOtI4DZbm0WFLj%2BAvhb%2BMVEyOH3LFY%2B%2BWoI43h%2Bm%2BKFo8FDsSktmyIuLynfrTRaMcMjg%3D%3D"}
+[debug] [2022-11-27T14:21:25.479Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/2ed23396-f37b-4bc6-9987-6af9bac3445e.zip GoogleAccessId=service-649334180242%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1669560685&Signature=a%2FUXKBlWFeUKkU5iWzxjmuAS5W4IwXsypOddgUmkqWDHUnccUEiVTd7FGQ7Gu5a7FylDrMGSBwSdJWlo7qCHEnn%2BM1V7wxvIPcqISckY9aM%2FcSJsaCPxrYFOfRXu%2F3S5rpYHg5yRyfZCSfqK1qkBFo4uzWaAC6i4Qt8Y8CtOd8Zz4Z83n0M7y87obP57DLY%2F5oqH2WMesnZJyNfqr%2B4JxjmFWaZQ0qrlBCm4ahaMvATKvYildw3dreEsVKkfrWtjw7H7dXE0iKEDr9l4KxfOtI4DZbm0WFLj%2BAvhb%2BMVEyOH3LFY%2B%2BWoI43h%2Bm%2BKFo8FDsSktmyIuLynfrTRaMcMjg%3D%3D
+[debug] [2022-11-27T14:21:25.479Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/2ed23396-f37b-4bc6-9987-6af9bac3445e.zip [stream]
+[debug] [2022-11-27T14:21:26.066Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/2ed23396-f37b-4bc6-9987-6af9bac3445e.zip 200
+[debug] [2022-11-27T14:21:26.066Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/2ed23396-f37b-4bc6-9987-6af9bac3445e.zip [omitted]
+[info] ✔  functions: functions folder uploaded successfully 
+[info] i  functions: updating Node.js 16 function getRoomIdWithPin(us-central1)... 
+[debug] [2022-11-27T14:21:26.072Z] >>> [apiv2][query] PATCH https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin updateMask=name%2CsourceUploadUrl%2CentryPoint%2Cruntime%2CdockerRegistry%2Clabels%2ChttpsTrigger.securityLevel%2CenvironmentVariables%2CavailableMemoryMb%2CsourceToken
+[debug] [2022-11-27T14:21:26.072Z] >>> [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin {"name":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin","sourceUploadUrl":"https://storage.googleapis.com/uploads-294529872616.us-central1.cloudfunctions.appspot.com/2ed23396-f37b-4bc6-9987-6af9bac3445e.zip?GoogleAccessId=service-649334180242@gcf-admin-robot.iam.gserviceaccount.com&Expires=1669560685&Signature=a%2FUXKBlWFeUKkU5iWzxjmuAS5W4IwXsypOddgUmkqWDHUnccUEiVTd7FGQ7Gu5a7FylDrMGSBwSdJWlo7qCHEnn%2BM1V7wxvIPcqISckY9aM%2FcSJsaCPxrYFOfRXu%2F3S5rpYHg5yRyfZCSfqK1qkBFo4uzWaAC6i4Qt8Y8CtOd8Zz4Z83n0M7y87obP57DLY%2F5oqH2WMesnZJyNfqr%2B4JxjmFWaZQ0qrlBCm4ahaMvATKvYildw3dreEsVKkfrWtjw7H7dXE0iKEDr9l4KxfOtI4DZbm0WFLj%2BAvhb%2BMVEyOH3LFY%2B%2BWoI43h%2Bm%2BKFo8FDsSktmyIuLynfrTRaMcMjg%3D%3D","entryPoint":"getRoomIdWithPin","runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","deployment-callable":"true","firebase-functions-hash":"c9bf60f42b0fa51bf654e90fe830d7cc90795594"},"httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"qwith-98273\",\"storageBucket\":\"qwith-98273.appspot.com\",\"locationId\":\"asia-northeast1\"}","GCLOUD_PROJECT":"qwith-98273","EVENTARC_CLOUD_EVENT_SOURCE":"projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin"},"availableMemoryMb":256}
+[debug] [2022-11-27T14:21:26.685Z] <<< [apiv2][status] PATCH https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin 400
+[debug] [2022-11-27T14:21:26.685Z] <<< [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin {"error":{"code":400,"message":"An operation on function getRoomIdWithPin in region us-central1 in project qwith-98273 is already in progress. Please try again later.","status":"FAILED_PRECONDITION"}}
+[warn] ⚠  functions: failed to update function projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin 
+[error] Failed to update function projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin
+[debug] [2022-11-27T14:21:26.689Z] Total Function Deployment time: 617
+[debug] [2022-11-27T14:21:26.689Z] 1 Functions Deployed
+[debug] [2022-11-27T14:21:26.689Z] 1 Functions Errored
+[debug] [2022-11-27T14:21:26.689Z] 0 Function Deployments Aborted
+[debug] [2022-11-27T14:21:26.689Z] Average Function Deployment time: 616
+[info] 
+[info] Functions deploy had errors with the following functions:
+	getRoomIdWithPin(us-central1)
+[info] i  functions: cleaning up build files... 
+[debug] [2022-11-27T14:21:26.899Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/qwith-98273/locations/us-central1/repositories/gcf-artifacts/packages/get_room_id_with_pin [none]
+[debug] [2022-11-27T14:21:26.900Z] >>> [apiv2][query] GET https://us.gcr.io/v2/qwith-98273/gcf/us-central1/tags/list [none]
+[debug] [2022-11-27T14:21:27.474Z] <<< [apiv2][status] GET https://us.gcr.io/v2/qwith-98273/gcf/us-central1/tags/list 200
+[debug] [2022-11-27T14:21:27.474Z] <<< [apiv2][body] GET https://us.gcr.io/v2/qwith-98273/gcf/us-central1/tags/list {"child":[],"manifest":{},"name":"qwith-98273/gcf/us-central1","tags":[]}
+[debug] [2022-11-27T14:21:27.474Z] Could not find image for function projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin
+[debug] [2022-11-27T14:21:28.147Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/qwith-98273/locations/us-central1/repositories/gcf-artifacts/packages/get_room_id_with_pin 200
+[debug] [2022-11-27T14:21:28.147Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/qwith-98273/locations/us-central1/repositories/gcf-artifacts/packages/get_room_id_with_pin {"name":"projects/qwith-98273/locations/us-central1/operations/4a5ac1e0-52fa-493b-ba69-e6f2afd4e561","metadata":{"@type":"type.googleapis.com/google.devtools.artifactregistry.v1beta2.OperationMetadata"}}
+[debug] [2022-11-27T14:21:28.148Z] >>> [apiv2][query] GET https://artifactregistry.googleapis.com/v1beta2/projects/qwith-98273/locations/us-central1/operations/4a5ac1e0-52fa-493b-ba69-e6f2afd4e561 [none]
+[debug] [2022-11-27T14:21:29.221Z] <<< [apiv2][status] GET https://artifactregistry.googleapis.com/v1beta2/projects/qwith-98273/locations/us-central1/operations/4a5ac1e0-52fa-493b-ba69-e6f2afd4e561 200
+[debug] [2022-11-27T14:21:29.221Z] <<< [apiv2][body] GET https://artifactregistry.googleapis.com/v1beta2/projects/qwith-98273/locations/us-central1/operations/4a5ac1e0-52fa-493b-ba69-e6f2afd4e561 {"name":"projects/qwith-98273/locations/us-central1/operations/4a5ac1e0-52fa-493b-ba69-e6f2afd4e561","metadata":{"@type":"type.googleapis.com/google.devtools.artifactregistry.v1beta2.OperationMetadata"},"done":true,"response":{"@type":"type.googleapis.com/google.protobuf.Empty"}}
+[debug] [2022-11-27T14:21:29.222Z] Functions deploy failed.
+[debug] [2022-11-27T14:21:29.222Z] {
+  "endpoint": {
+    "id": "getRoomIdWithPin",
+    "project": "qwith-98273",
+    "region": "us-central1",
+    "entryPoint": "getRoomIdWithPin",
+    "platform": "gcfv1",
+    "runtime": "nodejs16",
+    "callableTrigger": {},
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    },
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"qwith-98273\",\"storageBucket\":\"qwith-98273.appspot.com\",\"locationId\":\"asia-northeast1\"}",
+      "GCLOUD_PROJECT": "qwith-98273",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin"
+    },
+    "codebase": "default",
+    "availableMemoryMb": 256,
+    "securityLevel": "SECURE_ALWAYS",
+    "targetedByOnly": false,
+    "hash": "c9bf60f42b0fa51bf654e90fe830d7cc90795594"
+  },
+  "op": "update",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "function": "projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin"
+    },
+    "exit": 1,
+    "message": "Failed to update function projects/qwith-98273/locations/us-central1/functions/getRoomIdWithPin",
+    "original": {
+      "name": "FirebaseError",
+      "children": [],
+      "context": {
+        "body": {
+          "error": {
+            "code": 400,
+            "message": "An operation on function getRoomIdWithPin in region us-central1 in project qwith-98273 is already in progress. Please try again later.",
+            "status": "FAILED_PRECONDITION"
+          }
+        },
+        "response": {
+          "statusCode": 400
+        }
+      },
+      "exit": 1,
+      "message": "HTTP Error: 400, An operation on function getRoomIdWithPin in region us-central1 in project qwith-98273 is already in progress. Please try again later.",
+      "status": 400
+    },
+    "status": 500
+  }
+}
+[debug] [2022-11-27T14:21:29.311Z] Error: Failed to update function getRoomIdWithPin in region us-central1
+    at /opt/homebrew/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:41:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Fabricator.updateV1Function (/opt/homebrew/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:304:32)
+    at async Fabricator.updateEndpoint (/opt/homebrew/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:140:13)
+    at async handle (/opt/homebrew/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:78:17)
+[error] 
+[error] Error: There was an error deploying functions
