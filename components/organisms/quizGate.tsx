@@ -3,9 +3,9 @@ import { collection, doc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { db } from "../../firebaseConfig";
 import { Room, roomConverter } from "../../types/room";
-import QuizEntry from "./QuizEntry";
-import QuizPlay from "./QuizPlay";
-import QuizWaiting from "./QuizWaiting";
+import QuizEntry from "./quizEntry";
+import QuizPlay from "./quizPlay";
+import QuizWaiting from "./quizWaiting";
 
 export type QuizGateProps = {
   roomId: string;
