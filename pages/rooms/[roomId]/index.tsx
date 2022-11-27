@@ -1,6 +1,6 @@
 import { Center, Spinner } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import QuizGate from "../../../components/organisms/QuizGate";
+import QuizGate from "../../../components/organisms/quizGate";
 
 export default function QuizPage() {
   const router = useRouter();
