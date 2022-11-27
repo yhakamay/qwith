@@ -7,7 +7,8 @@ import {
 } from "firebase/firestore";
 
 export type ChoiceQuiz = {
-  q: string;
+  id?: string;
+  question: string;
   options: string[];
   answer: string;
 };
@@ -15,7 +16,7 @@ export type ChoiceQuiz = {
 export const choiceQuizConverter: FirestoreDataConverter<ChoiceQuiz> = {
   toFirestore(choiceQuiz: WithFieldValue<ChoiceQuiz>): DocumentData {
     return {
-      q: choiceQuiz.q,
+      question: choiceQuiz.question,
       options: choiceQuiz.options,
       answer: choiceQuiz.answer,
     };
@@ -26,7 +27,8 @@ export const choiceQuizConverter: FirestoreDataConverter<ChoiceQuiz> = {
   ): ChoiceQuiz {
     const data = snapshot.data(options);
     return {
-      q: data.q,
+      id: snapshot.id,
+      question: data.question,
       options: data.options,
       answer: data.answer,
     };
