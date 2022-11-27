@@ -20,6 +20,7 @@ export default function Home() {
   const router = useRouter();
   const toast = useToast();
 
+  // TODO: Rename to enterRoom
   async function enterQwith() {
     setLoading(true);
     const matchedRooms = await getDocs(
