@@ -27,7 +27,7 @@ export default function Home() {
       query(
         collection(db, "rooms"),
         where("pin", "==", pin),
-        where("status", "==", "waiting")
+        where("status", "!=", "closed")
       )
     );
 
