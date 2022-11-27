@@ -62,7 +62,7 @@ export default function CreateRoomPage() {
   return (
     <>
       <VStack>
-        <Heading>CreateQuizPage</Heading>
+        <Heading>Create Room</Heading>
         <Button onClick={signOut} variant="outline">
           Sign Out
         </Button>

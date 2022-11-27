@@ -1,24 +1,31 @@
+import { CheckIcon } from "@chakra-ui/icons";
 import {
   Button,
   Center,
   Divider,
   FormControl,
   FormLabel,
+  HStack,
+  IconButton,
   Input,
+  Spacer,
   Spinner,
   VStack,
 } from "@chakra-ui/react";
 import { addDoc, collection, doc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import QuizzesList from "../../components/molecules/quizzesList";
-import { db } from "../../firebaseConfig";
+import { auth, db } from "../../firebaseConfig";
 import { ChoiceQuiz } from "../../types/choiceQuiz";
 
 export default function CreateQuizPage() {
   const router = useRouter();
+  const [user] = useAuthState(auth);
   const { roomId } = router.query;
   const [loading, setLoading] = useState(false);
+  const [saving, setSaving] = useState(false);
   const [question, setQuestion] = useState("");
   const [option1, setOption1] = useState("");
   const [option2, setOption2] = useState("");
@@ -35,6 +42,15 @@ export default function CreateQuizPage() {
 
   return (
     <VStack>
+      <HStack w="100%">
+        <Spacer />
+        <IconButton
+          onClick={saveRoom}
+          isLoading={saving}
+          icon={<CheckIcon />}
+          aria-label={"Complete"}
+        />
+      </HStack>
       <FormControl isRequired>
         <FormLabel>Question</FormLabel>
         <Input
@@ -110,5 +126,17 @@ export default function CreateQuizPage() {
     } finally {
       setLoading(false);
     }
+  }
+
+  async function saveRoom() {
+    // There's nothing to do here since we save all the quizzes in real time
+    // Just navigate the user to /users/[uid]/rooms/
+    // However, clicking 'Save' takes 0 ms is not a good UX,
+    // so we can add a loading state here
+    setSaving(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setSaving(false);
+
+    router.push(`/users/${user!.uid}/rooms`);
   }
 }
