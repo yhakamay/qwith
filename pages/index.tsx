@@ -1,7 +1,5 @@
 import {
-  Box,
   Button,
-  Center,
   HStack,
   PinInput,
   PinInputField,
@@ -20,8 +18,7 @@ export default function Home() {
   const router = useRouter();
   const toast = useToast();
 
-  // TODO: Rename to enterRoom
-  async function enterQwith() {
+  async function tryEnterRoom() {
     setLoading(true);
     const matchedRooms = await getDocs(
       query(
@@ -65,27 +62,24 @@ export default function Home() {
 
   return (
     <>
-      <Center h="100vh">
-        <VStack spacing={4}>
-          <Image src="/vercel.svg" width={200} height={200} alt="logo" />
-          <Box h={8} />
-          <HStack>
-            <PinInput onChange={setPin}>
-              <PinInputField />
-              <PinInputField />
-              <PinInputField />
-              <PinInputField />
-            </PinInput>
-          </HStack>
-          <Button
-            isLoading={isLoading}
-            disabled={pin.length !== 4}
-            onClick={enterQwith}
-          >
-            Click me
-          </Button>
-        </VStack>
-      </Center>
+      <VStack spacing={4} pt="30vh">
+        <Image src="/vercel.svg" width={200} height={200} alt="logo" />
+        <HStack pt={8}>
+          <PinInput onChange={setPin}>
+            <PinInputField />
+            <PinInputField />
+            <PinInputField />
+            <PinInputField />
+          </PinInput>
+        </HStack>
+        <Button
+          isLoading={isLoading}
+          disabled={pin.length !== 4}
+          onClick={tryEnterRoom}
+        >
+          Click me
+        </Button>
+      </VStack>
     </>
   );
 }
