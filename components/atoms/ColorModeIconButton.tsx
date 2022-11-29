@@ -8,7 +8,7 @@ export default function ColorModeIconButton() {
     <IconButton
       onClick={toggleColorMode}
       aria-label={"Toggle color mode"}
-      variant="outline"
+      variant="ghost"
       icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
     />
   );

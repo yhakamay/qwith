@@ -1,29 +1,18 @@
-import { Flex, useDisclosure, IconButton, Show } from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { Flex, Show, HStack } from "@chakra-ui/react";
 import ColorModeIconButton from "../atoms/ColorModeIconButton";
 import Logo from "../atoms/Logo";
-import HeaderDrawer from "../molecules/HeaderDrawer";
+import AuthButtons from "../molecules/AuthButtons";
 
 export default function Header() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
   return (
     <Flex as="header" align="center" justify="space-between" p="8">
       <Logo />
-      <Show above="md">
-        <ColorModeIconButton />
-      </Show>
-      <Show below="md">
-        <Flex align="center" fontSize="sm">
-          <IconButton
-            onClick={onOpen}
-            aria-label={"Toggle color mode"}
-            variant="outline"
-            icon={<HamburgerIcon />}
-          />
-        </Flex>
-      </Show>
-      <HeaderDrawer isOpen={isOpen} onClose={onClose} />
+      <HStack spacing={8}>
+        <Show above="md">
+          <ColorModeIconButton />
+        </Show>
+        <AuthButtons />
+      </HStack>
     </Flex>
   );
 }

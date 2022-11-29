@@ -3,11 +3,11 @@ import { collection, doc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDocumentData } from "react-firebase-hooks/firestore";
-import Loading from "../../components/atoms/Loading";
-import { SomethingWentWrong } from "../../components/atoms/SomethingWentWrong";
-import NewQuiz from "../../components/organisms/NewQuiz";
-import { auth, db } from "../../firebaseConfig";
-import { roomConverter } from "../../types/room";
+import Loading from "../../../components/atoms/Loading";
+import { SomethingWentWrong } from "../../../components/atoms/SomethingWentWrong";
+import NewQuiz from "../../../components/organisms/NewQuiz";
+import { auth, db } from "../../../firebaseConfig";
+import { roomConverter } from "../../../types/room";
 
 export default function CreateQuizPage() {
   const router = useRouter();
