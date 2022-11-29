@@ -71,7 +71,12 @@ export default function CreateRoomPage() {
           resize="none"
           h="sm"
         ></Textarea>
-        <Button onClick={createRoom} isLoading={loading} width="full">
+        <Button
+          onClick={createRoom}
+          isLoading={loading}
+          isDisabled={title === "" || description === ""}
+          width="full"
+        >
           Next
         </Button>
       </VStack>
