@@ -1,14 +1,4 @@
-import {
-  Button,
-  Card,
-  Flex,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
-  useToast,
-  VStack,
-} from "@chakra-ui/react";
+import { Button, FormControl, Input, useToast, VStack } from "@chakra-ui/react";
 import { addDoc, collection, doc } from "firebase/firestore";
 import router from "next/router";
 import { useState } from "react";
@@ -26,28 +16,20 @@ export default function QuizEntry(props: QuizEntryProps) {
   const toast = useToast();
 
   return (
-    <>
-      <Flex align={"center"} justify={"center"} h={"100vh"}>
-        <Card p={"16"}>
-          <VStack spacing={4}>
-            <Heading>Room: {roomId}</Heading>
-            <form onSubmit={handleSubmit}>
-              <FormControl isRequired mt={8}>
-                <FormLabel>Team name</FormLabel>
-                <Input
-                  type="text"
-                  placeholder="Wonderful name ❤️"
-                  onChange={(e) => setTeamName(e.currentTarget.value)}
-                />
-              </FormControl>
-              <Button type="submit" mt={4} width="full" isLoading={isLoading}>
-                Next
-              </Button>
-            </form>
-          </VStack>
-        </Card>
-      </Flex>
-    </>
+    <VStack spacing={4} pt="30vh">
+      <form onSubmit={handleSubmit}>
+        <FormControl isRequired>
+          <Input
+            type="text"
+            placeholder="Team name ❤️"
+            onChange={(e) => setTeamName(e.currentTarget.value)}
+          />
+        </FormControl>
+        <Button type="submit" mt={4} width="full" isLoading={isLoading}>
+          Create team
+        </Button>
+      </form>
+    </VStack>
   );
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
