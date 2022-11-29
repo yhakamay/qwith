@@ -10,11 +10,12 @@ export type Room = {
   pin: string;
   status: "waiting" | "playing" | "closed";
   title: string;
-  description?: string;
+  description: string | null;
   createdAt: Date;
   updatedAt: Date;
   expiresAt: Date;
   createdBy: string;
+  currentQuizId: string | null;
 };
 
 export const roomConverter: FirestoreDataConverter<Room> = {
@@ -28,6 +29,7 @@ export const roomConverter: FirestoreDataConverter<Room> = {
       updatedAt: room.updatedAt,
       expiresAt: room.expiresAt,
       createdBy: room.createdBy,
+      currentQuizId: room.currentQuizId,
     };
   },
   fromFirestore(
@@ -44,6 +46,7 @@ export const roomConverter: FirestoreDataConverter<Room> = {
       updatedAt: data.updatedAt.toDate(),
       expiresAt: data.expiresAt.toDate(),
       createdBy: data.createdBy,
+      currentQuizId: data.currentQuizId,
     };
   },
 };
