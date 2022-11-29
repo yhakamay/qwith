@@ -2,7 +2,7 @@ import { Center, Heading, Spinner, Text, VStack } from "@chakra-ui/react";
 import { collection, doc } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { db } from "../../firebaseConfig";
-import { ChoiceQuiz, choiceQuizConverter } from "../../types/choiceQuiz";
+import { Quiz, quizConverter } from "../../types/quiz";
 import SingleQuiz from "../molecules/singleQuiz";
 
 type QuizPlayProps = {
@@ -14,9 +14,9 @@ export default function QuizPlay(props: QuizPlayProps) {
   const { roomId, teamId } = props;
   const roomRef = doc(db, "rooms", roomId);
   const quizzesRef = collection(roomRef, "quizzes").withConverter(
-    choiceQuizConverter
+    quizConverter
   );
-  const [quizzes, loading, error] = useCollectionData<ChoiceQuiz>(quizzesRef);
+  const [quizzes, loading, error] = useCollectionData<Quiz>(quizzesRef);
 
   if (error || quizzes?.length === 0) {
     return (
