@@ -16,7 +16,7 @@ import {
 import { collection, deleteDoc, doc } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { db } from "../../firebaseConfig";
-import { choiceQuizConverter, ChoiceQuiz } from "../../types/choiceQuiz";
+import { quizConverter, Quiz } from "../../types/quiz";
 
 export type QuizzesListProps = {
   roomId: string;
@@ -28,9 +28,9 @@ export default function QuizzesList(props: QuizzesListProps) {
   const roomsRef = collection(db, "rooms");
   const roomRef = doc(roomsRef, roomId as string);
   const quizzesRef = collection(roomRef, "quizzes").withConverter(
-    choiceQuizConverter
+    quizConverter
   );
-  const [quizzes, loading, error] = useCollectionData<ChoiceQuiz>(quizzesRef);
+  const [quizzes, loading, error] = useCollectionData<Quiz>(quizzesRef);
 
   if (error) {
     return (
