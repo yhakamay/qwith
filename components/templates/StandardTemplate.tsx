@@ -1,4 +1,5 @@
 import { Center, VStack } from "@chakra-ui/react";
+import Footer from "../organisms/Footer";
 import Header from "../organisms/Header";
 
 type StandardTemplateProps = {
@@ -16,6 +17,7 @@ export default function StandardTemplate(props: StandardTemplateProps) {
           {children}
         </VStack>
       </Center>
+      <Footer />
     </>
   );
 }
