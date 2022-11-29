@@ -77,7 +77,7 @@ export default function CreateRoomPage() {
           isDisabled={title === "" || description === ""}
           width="full"
         >
-          Next
+          Create Room
         </Button>
       </VStack>
     </>
