@@ -6,25 +6,25 @@ import {
   WithFieldValue,
 } from "firebase/firestore";
 
-export type ChoiceQuiz = {
+export type Quiz = {
   id?: string;
   question: string;
   options: string[];
   answer: string;
 };
 
-export const choiceQuizConverter: FirestoreDataConverter<ChoiceQuiz> = {
-  toFirestore(choiceQuiz: WithFieldValue<ChoiceQuiz>): DocumentData {
+export const quizConverter: FirestoreDataConverter<Quiz> = {
+  toFirestore(quiz: WithFieldValue<Quiz>): DocumentData {
     return {
-      question: choiceQuiz.question,
-      options: choiceQuiz.options,
-      answer: choiceQuiz.answer,
+      question: quiz.question,
+      options: quiz.options,
+      answer: quiz.answer,
     };
   },
   fromFirestore(
     snapshot: QueryDocumentSnapshot,
     options: SnapshotOptions
-  ): ChoiceQuiz {
+  ): Quiz {
     const data = snapshot.data(options);
     return {
       id: snapshot.id,
