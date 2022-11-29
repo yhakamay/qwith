@@ -18,7 +18,7 @@ import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import QuizzesList from "../../components/molecules/quizzesList";
 import { auth, db } from "../../firebaseConfig";
-import { ChoiceQuiz } from "../../types/choiceQuiz";
+import { Quiz } from "../../types/quiz";
 
 export default function CreateQuizPage() {
   const router = useRouter();
@@ -108,7 +108,7 @@ export default function CreateQuizPage() {
     const roomsRef = collection(db, "rooms");
     const roomRef = doc(roomsRef, roomId as string);
     const quizzesRef = collection(roomRef, "quizzes");
-    const quiz: ChoiceQuiz = {
+    const quiz: Quiz = {
       question: question,
       options: [option1, option2, option3, option4],
       answer: option1,
