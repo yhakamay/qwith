@@ -2,17 +2,12 @@ import * as functions from "firebase-functions";
 import admin = require("firebase-admin");
 
 admin.initializeApp();
+const db = admin.firestore();
+const roomsRef = db.collection("rooms");
 
 exports.getRoomIdWithPin = functions.https.onCall((data) => {
   const pin: string = data.pin;
-  const db = admin.firestore();
-  const roomsRef = db.collection("rooms");
-
-  functions.logger.log("pin", pin);
-
-  // If just one room with the pin exists, return the room id
-  // Otherwise, throw an error
-  return roomsRef
+  const querySnapshot = await roomsRef
     .where("pin", "==", pin)
     .where("status", "!=", "closed")
     .get()
