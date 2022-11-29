@@ -4,6 +4,8 @@ import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Loading from "../../components/atoms/Loading";
+import { SomethingWentWrong } from "../../components/atoms/SomethingWentWrong";
 import { auth, db } from "../../firebaseConfig";
 import { Room } from "../../types/room";
 
@@ -33,21 +35,12 @@ export default function CreateRoomPage() {
   const [description, setDescription] = useState("");
   const router = useRouter();
 
-  if (error) {
-    return (
-      <VStack>
-        <Heading>Something went wrong...</Heading>
-        <Heading>{error?.message}</Heading>
-      </VStack>
-    );
+  if (loadingAuth) {
+    return <Loading />;
   }
 
-  if (loadingAuth) {
-    return (
-      <VStack>
-        <Heading>Loading...</Heading>
-      </VStack>
-    );
+  if (error) {
+    return <SomethingWentWrong />;
   }
 
   if (!user) {
@@ -61,7 +54,7 @@ export default function CreateRoomPage() {
 
   return (
     <>
-      <VStack>
+      <VStack w="100%">
         <Heading>Create Room</Heading>
         <Button onClick={signOut} variant="outline">
           Sign Out
@@ -99,6 +92,7 @@ export default function CreateRoomPage() {
       createdBy: user!.uid,
       pin: pin!,
       status: "waiting",
+      currentQuizId: null,
     };
 
     try {

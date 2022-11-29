@@ -3,7 +3,7 @@ import { collection, doc } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { db } from "../../firebaseConfig";
 import { Quiz, quizConverter } from "../../types/quiz";
-import SingleQuiz from "../molecules/singleQuiz";
+import SingleQuiz from "../molecules/SingleQuiz";
 
 type QuizPlayProps = {
   roomId: string;

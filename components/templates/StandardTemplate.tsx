@@ -1,3 +1,4 @@
+import { Center, VStack } from "@chakra-ui/react";
 import Header from "../organisms/Header";
 
 type StandardTemplateProps = {
@@ -10,7 +11,11 @@ export default function StandardTemplate(props: StandardTemplateProps) {
   return (
     <>
       <Header />
-      {children}
+      <Center>
+        <VStack w={{ base: "sm", md: "lg" }} align="center">
+          {children}
+        </VStack>
+      </Center>
     </>
   );
 }
