@@ -36,7 +36,7 @@ export default function QuizPlay(props: QuizPlayProps) {
   }
 
   return (
-    <VStack>
+    <VStack pt="30vh">
       <Heading>QuizPlay</Heading>
       <SingleQuiz roomId={roomId} teamId={teamId} quiz={quizzes![0]} />
     </VStack>
