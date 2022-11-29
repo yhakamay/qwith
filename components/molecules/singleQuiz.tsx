@@ -10,12 +10,12 @@ import {
 import { collection, doc, setDoc } from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../../firebaseConfig";
-import { ChoiceQuiz } from "../../types/choiceQuiz";
+import { Quiz } from "../../types/quiz";
 
 export type SingleQuizProps = {
   roomId: string;
   teamId: string;
-  quiz: ChoiceQuiz;
+  quiz: Quiz;
 };
 
 export default function SingleQuiz(props: SingleQuizProps) {
