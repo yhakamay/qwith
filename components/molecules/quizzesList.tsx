@@ -1,22 +1,9 @@
-import { CloseIcon } from "@chakra-ui/icons";
-import {
-  VStack,
-  Heading,
-  Spinner,
-  Card,
-  CardBody,
-  Stack,
-  StackDivider,
-  Box,
-  Text,
-  Center,
-  HStack,
-  IconButton,
-} from "@chakra-ui/react";
-import { collection, deleteDoc, doc } from "firebase/firestore";
+import { VStack, Heading, Spinner, Box, Text, Center } from "@chakra-ui/react";
+import { collection, doc } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { db } from "../../firebaseConfig";
 import { quizConverter, Quiz } from "../../types/quiz";
+import { QuizCard } from "../atoms/QuizCard";
 
 export type QuizzesListProps = {
   roomId: string;
@@ -51,36 +38,15 @@ export default function QuizzesList(props: QuizzesListProps) {
 
   return (
     <VStack>
-      <Card overflow="hidden">
-        <CardBody>
-          <Stack divider={<StackDivider />} spacing="4">
-            {quizzes?.map((quiz) => (
-              <HStack key={quiz.id} justifyContent="space-between">
-                <Box>
-                  <Heading size="xs" textTransform="uppercase">
-                    {quiz.question}
-                  </Heading>
-                  {quiz.options.map((option, index) => (
-                    <Text key={`${quiz.id}-${index}`} pt="2" fontSize="sm">
-                      {`${option} ${option === quiz.answer ? "← answer" : ""} `}
-                    </Text>
-                  ))}
-                </Box>
-                <IconButton
-                  onClick={() => deleteQuiz(quiz.id!)}
-                  aria-label={"Delete"}
-                  icon={<CloseIcon />}
-                ></IconButton>
-              </HStack>
-            ))}
-          </Stack>
-        </CardBody>
-      </Card>
+      {quizzes?.map((quiz, index) => (
+        <QuizCard
+          key={quiz.id}
+          quizzesRef={quizzesRef}
+          quiz={quiz}
+          index={index}
+          editable={true}
+        />
+      ))}
     </VStack>
   );
-
-  async function deleteQuiz(id: string) {
-    // Delete document from firestore collection
-    await deleteDoc(doc(quizzesRef, id));
-  }
 }

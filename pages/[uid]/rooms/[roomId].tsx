@@ -21,6 +21,8 @@ export default function CreateQuizPage() {
     );
   }
 
+  console.log(roomId);
+
   return <CreateQuizPageBody roomId={roomId as string} />;
 }
 
@@ -32,9 +34,8 @@ function CreateQuizPageBody(props: CreateQuizPageBodyProps) {
   const { roomId } = props;
   const [user] = useAuthState(auth);
   const roomsRef = collection(db, "rooms");
-  const [room, loading, error] = useDocumentData(
-    doc(roomsRef, roomId as string).withConverter(roomConverter)
-  );
+  const roomRef = doc(roomsRef, roomId).withConverter(roomConverter);
+  const [room, loading, error] = useDocumentData(roomRef);
 
   if (loading) {
     return <Loading />;
@@ -44,5 +45,5 @@ function CreateQuizPageBody(props: CreateQuizPageBodyProps) {
     return <SomethingWentWrong />;
   }
 
-  return <NewQuiz roomId={roomId} />;
+  return <NewQuiz roomId={roomId} room={room} />;
 }

@@ -179,3 +179,27 @@ async function validateRoom(roomId: string): Promise<Room> {
   }
   return room;
 }
+
+exports.startQuiz = functions.https.onCall(async (data) => {
+  const roomId: string = data.roomId;
+  await validateRoom(roomId);
+  const quizzesCollection = await getQuizzesCollection(roomId);
+
+  if (quizzesCollection.empty) {
+    throw new functions.https.HttpsError("not-found", "No quizzes in the room");
+  }
+
+  await roomsRef.doc(roomId).update({
+    status: "playing",
+    currentQuizId: quizzesCollection.docs[0].id,
+  } as Partial<Room>);
+});
+
+exports.endQuiz = functions.https.onCall(async (data) => {
+  const roomId: string = data.roomId;
+  await validateRoom(roomId);
+  await roomsRef.doc(roomId).update({
+    status: "closed",
+    currentQuizId: null,
+  } as Partial<Room>);
+});

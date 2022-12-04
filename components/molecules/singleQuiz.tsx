@@ -23,7 +23,12 @@ export default function SingleQuiz(props: SingleQuizProps) {
   const [ans, setAns] = useState("");
 
   return (
-    <Card>
+    <Card
+      w={{
+        base: "sm",
+        md: "lg",
+      }}
+    >
       <CardHeader>{quiz.question}</CardHeader>
       <CardBody>
         <RadioGroup onChange={(e) => updateAns(e)} value={ans}>

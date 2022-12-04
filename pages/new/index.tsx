@@ -102,7 +102,7 @@ export default function CreateRoomPage() {
 
     try {
       const docRef = await addDoc(roomsRef, room);
-      router.push(`/new/${docRef.id}`);
+      router.push(`/${auth.currentUser?.uid}/rooms/${docRef.id}`);
       setTitle("");
       setDescription("");
     } catch (error) {

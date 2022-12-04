@@ -1,3 +1,4 @@
+import { CloseIcon } from "@chakra-ui/icons";
 import {
   Card,
   CardBody,
@@ -8,46 +9,66 @@ import {
   UnorderedList,
   ListItem,
   Badge,
+  HStack,
+  IconButton,
 } from "@chakra-ui/react";
+import { CollectionReference, deleteDoc, doc } from "firebase/firestore";
 import { Quiz } from "../../functions/src";
 
 type QuizCardProps = {
   quiz: Quiz;
   index: number;
+  quizzesRef?: CollectionReference<Quiz>;
+  editable?: boolean;
 };
 
 export function QuizCard(props: QuizCardProps) {
-  const { quiz, index } = props;
+  const { quiz, index, quizzesRef, editable } = props;
   const { question, answer: correctAnswer, options } = quiz;
 
   return (
     <Card w={{ base: "sm", md: "lg" }}>
       <CardBody>
-        <Stat>
-          <StatLabel># {index + 1}</StatLabel>
-          <StatNumber>{question}</StatNumber>
-          <StatHelpText>
-            <UnorderedList>
-              {options?.map((option) => (
-                <>
-                  <ListItem key={index}>
-                    {option === correctAnswer ? (
-                      <>
-                        {option}
-                        <Badge colorScheme="green" mx={2}>
-                          Correct
-                        </Badge>
-                      </>
-                    ) : (
-                      <>{option}</>
-                    )}
-                  </ListItem>
-                </>
-              ))}
-            </UnorderedList>
-          </StatHelpText>
-        </Stat>
+        <HStack>
+          <Stat>
+            <StatLabel># {index + 1}</StatLabel>
+            <StatNumber>{question}</StatNumber>
+            <StatHelpText>
+              <UnorderedList>
+                {options?.map((option, index) => (
+                  <>
+                    <ListItem key={index}>
+                      {option === correctAnswer ? (
+                        <>
+                          {option}
+                          <Badge colorScheme="green" mx={2}>
+                            Correct
+                          </Badge>
+                        </>
+                      ) : (
+                        <>{option}</>
+                      )}
+                    </ListItem>
+                  </>
+                ))}
+              </UnorderedList>
+            </StatHelpText>
+          </Stat>
+          {editable === true && (
+            <IconButton
+              aria-label="Delete quiz"
+              icon={<CloseIcon />}
+              onClick={() => deleteQuiz(quiz.id!)}
+            />
+          )}
+        </HStack>
       </CardBody>
     </Card>
   );
+
+  async function deleteQuiz(id: string) {
+    if (quizzesRef) {
+      await deleteDoc(doc(quizzesRef, id));
+    }
+  }
 }
