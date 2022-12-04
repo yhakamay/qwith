@@ -1,13 +1,14 @@
 import { collection, doc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { useDocumentData } from "react-firebase-hooks/firestore";
-import Loading from "../../../components/atoms/Loading";
-import { SomethingWentWrong } from "../../../components/atoms/SomethingWentWrong";
-import QuizEntry from "../../../components/organisms/QuizEntry";
-import QuizPlay from "../../../components/organisms/QuizPlay";
-import QuizWaiting from "../../../components/organisms/QuizWaiting";
-import { db } from "../../../firebaseConfig";
-import { roomConverter, Room } from "../../../types/room";
+import Loading from "../../components/atoms/Loading";
+import { SomethingWentWrong } from "../../components/atoms/SomethingWentWrong";
+import QuizEntry from "../../components/organisms/QuizEntry";
+import QuizPlay from "../../components/organisms/QuizPlay";
+import QuizResult from "../../components/organisms/QuizResult";
+import QuizWaiting from "../../components/organisms/QuizWaiting";
+import { db } from "../../firebaseConfig";
+import { roomConverter, Room } from "../../types/room";
 
 export default function QuizPage() {
   const router = useRouter();
@@ -45,16 +46,16 @@ function QuizPageBody(props: QuizPortalProps) {
   }
 
   if (room?.status === "closed") {
-    return <SomethingWentWrong>This room is closed 👋</SomethingWentWrong>;
+    return <QuizResult roomId={roomId} />;
   }
 
   if (!teamId) {
-    return <QuizEntry roomId={roomId as string} />;
+    return <QuizEntry roomId={roomId} />;
   }
 
   if (room?.status === "waiting") {
-    return <QuizWaiting roomId={roomId as string} teamId={teamId as string} />;
+    return <QuizWaiting roomId={roomId} teamId={teamId} />;
   }
 
-  return <QuizPlay roomId={roomId as string} teamId={teamId as string} />;
+  return <QuizPlay roomId={roomId} teamId={teamId} />;
 }

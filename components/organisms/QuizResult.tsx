@@ -1,42 +1,30 @@
 import {
-  Heading,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
   VStack,
+  Heading,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
 } from "@chakra-ui/react";
 import { collection, doc } from "firebase/firestore";
-import { useRouter } from "next/router";
 import {
-  useCollectionData,
   useDocumentData,
+  useCollectionData,
 } from "react-firebase-hooks/firestore";
-import Loading from "../../components/atoms/Loading";
-import QuizCardListView from "../../components/molecules/QuizCardListView";
-import TeamCardListView from "../../components/molecules/TeamCardListView";
 import { db } from "../../firebaseConfig";
 import { quizConverter } from "../../types/quiz";
 import { roomConverter } from "../../types/room";
 import { teamConverter } from "../../types/team";
-
-export default function ResultPage() {
-  const router = useRouter();
-  const { roomId } = router.query;
-
-  if (!router.isReady) {
-    return <Loading />;
-  }
-
-  return <ResultPageBody roomId={roomId as string} />;
-}
+import Loading from "../atoms/Loading";
+import QuizCardListView from "../molecules/QuizCardListView";
+import TeamCardListView from "../molecules/TeamCardListView";
 
 type ResultPageBodyProps = {
   roomId: string;
 };
 
-function ResultPageBody(props: ResultPageBodyProps) {
+export default function QuizResult(props: ResultPageBodyProps) {
   const { roomId } = props;
   const roomsRef = collection(db, "rooms").withConverter(roomConverter);
   const roomRef = doc(roomsRef, roomId).withConverter(roomConverter);
