@@ -4,7 +4,7 @@ import { Quiz } from "../../functions/src";
 import { quizConverter } from "../../types/quiz";
 import Loading from "../atoms/Loading";
 import { SomethingWentWrong } from "../atoms/SomethingWentWrong";
-import SingleQuiz from "./SingleQuiz";
+import SingleQuiz from "./singleQuiz";
 
 type CurrentQuizProps = {
   roomId: string;

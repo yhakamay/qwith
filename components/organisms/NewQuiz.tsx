@@ -8,7 +8,7 @@ import { Room, roomConverter } from "../../types/room";
 import Loading from "../atoms/Loading";
 import { SomethingWentWrong } from "../atoms/SomethingWentWrong";
 import NewQuizForm from "../molecules/NewQuizForm";
-import QuizzesList from "../molecules/QuizzesList";
+import QuizzesList from "../molecules/quizzesList";
 
 type NewQuizProps = {
   roomId: string;
@@ -24,10 +24,6 @@ export default function NewQuiz(props: NewQuizProps) {
   const [startQuiz, loadingStartQuiz, errorStartQuiz] = useHttpsCallable(
     functions,
     "startQuiz"
-  );
-  const [endQuiz, loadingEndQuiz, errorEndQuiz] = useHttpsCallable(
-    functions,
-    "endQuiz"
   );
   const [nextQuiz, loadingNextQuiz, errorNextQuiz] = useHttpsCallable(
     functions,
