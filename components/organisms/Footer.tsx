@@ -32,7 +32,7 @@ export default function Footer() {
           by
         </Text>
         <Link
-          href="https://twitter.com/ryota_murakami"
+          href="https://twitter.com/yhakamay"
           target="_blank"
           rel="noopener"
         >
