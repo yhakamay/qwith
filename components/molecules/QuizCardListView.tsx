@@ -1,5 +1,5 @@
 import { VStack } from "@chakra-ui/react";
-import { Quiz } from "../../functions/src";
+import { Quiz } from "../../types/quiz";
 import { QuizCard } from "../atoms/QuizCard";
 
 type QuizCardListViewProps = {

@@ -13,7 +13,7 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { CollectionReference, deleteDoc, doc } from "firebase/firestore";
-import { Quiz } from "../../functions/src";
+import { Quiz } from "../../types/quiz";
 
 type QuizCardProps = {
   quiz: Quiz;

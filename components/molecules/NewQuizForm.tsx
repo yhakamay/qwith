@@ -12,7 +12,7 @@ import {
 import { collection, doc, addDoc } from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../../firebaseConfig";
-import { Quiz } from "../../functions/src";
+import { Quiz } from "../../types/quiz";
 
 type NewQuizFormProps = {
   roomId: string;

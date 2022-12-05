@@ -1,7 +1,6 @@
 import { CollectionReference, doc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
-import { Quiz } from "../../functions/src";
-import { quizConverter } from "../../types/quiz";
+import { Quiz, quizConverter } from "../../types/quiz";
 import Loading from "../atoms/Loading";
 import { SomethingWentWrong } from "../atoms/SomethingWentWrong";
 import SingleQuiz from "./singleQuiz";
