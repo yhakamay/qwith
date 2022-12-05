@@ -1,5 +1,5 @@
 import { AddIcon } from "@chakra-ui/icons";
-import { Center, HStack, Text } from "@chakra-ui/react";
+import { Box, Center, HStack, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -36,12 +36,14 @@ export default function Footer() {
           target="_blank"
           rel="noopener"
         >
-          <Image
-            src="/logos/yhakamaya.png"
-            alt={"yhakamaya"}
-            width={24}
-            height={24}
-          />
+          <Box borderRadius="md" overflow="hidden">
+            <Image
+              src="/logos/yhakamaya.png"
+              alt={"yhakamaya"}
+              width={24}
+              height={24}
+            />
+          </Box>
         </Link>
       </HStack>
     </Center>
