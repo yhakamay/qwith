@@ -1,5 +1,5 @@
 import * as functions from "firebase-functions";
-import admin = require("firebase-admin");
+import * as admin from "firebase-admin";
 
 admin.initializeApp();
 const db = admin.firestore();

@@ -3,10 +3,10 @@ import { useRouter } from "next/router";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import Loading from "../../components/atoms/Loading";
 import { SomethingWentWrong } from "../../components/atoms/SomethingWentWrong";
-import QuizEntry from "../../components/organisms/QuizEntry";
-import QuizPlay from "../../components/organisms/QuizPlay";
+import QuizEntry from "../../components/organisms/quizEntry";
+import QuizPlay from "../../components/organisms/quizPlay";
 import QuizResult from "../../components/organisms/QuizResult";
-import QuizWaiting from "../../components/organisms/QuizWaiting";
+import QuizWaiting from "../../components/organisms/quizWaiting";
 import { db } from "../../firebaseConfig";
 import { roomConverter, Room } from "../../types/room";
 
