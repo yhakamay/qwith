@@ -1,0 +1,11 @@
+{
+  "/_app": "pages/_app.js",
+  "/[uid]/rooms/[roomId]": "pages/[uid]/rooms/[roomId].html",
+  "/[uid]/rooms": "pages/[uid]/rooms.html",
+  "/": "pages/index.html",
+  "/new": "pages/new.html",
+  "/rooms/[roomId]": "pages/rooms/[roomId].html",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
+}
