@@ -3,15 +3,11 @@ import {
   Avatar,
   Center,
   Link,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverCloseButton,
-  PopoverContent,
-  PopoverFooter,
-  PopoverHeader,
-  PopoverTrigger,
-  VStack,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
 } from "@chakra-ui/react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebaseConfig";
@@ -27,35 +23,29 @@ export default function AuthButtons() {
 
   return (
     <>
-      <Popover>
-        <PopoverTrigger>
+      <Menu>
+        <MenuButton>
           <Avatar
             size="sm"
             cursor="pointer"
             name={user.displayName ?? ""}
             src={user.photoURL ?? undefined}
           />
-        </PopoverTrigger>
-        <PopoverContent>
-          <PopoverArrow />
-          <PopoverCloseButton />
-          <PopoverHeader>{`Hi, ${user.displayName} 👋`}</PopoverHeader>
-          <PopoverBody>
-            <VStack spacing={4}>
-              <Link as={NextLink} href={`/${user.uid}/rooms/`}>
-                Your rooms
-              </Link>
-              <Link>🚧 Your friends 🚧</Link>
-              <Link>🚧 Profile settings 🚧</Link>
-            </VStack>
-          </PopoverBody>
-          <PopoverFooter>
-            <Center>
-              <SignOutButton />
-            </Center>
-          </PopoverFooter>
-        </PopoverContent>
-      </Popover>
+        </MenuButton>
+        <MenuList>
+          <MenuItem>
+            <Link as={NextLink} href={`/${user.uid}/rooms/`}>
+              Your rooms
+            </Link>
+          </MenuItem>
+          <MenuItem>🚧 Your friends 🚧</MenuItem>
+          <MenuItem>🚧 Profile settings 🚧</MenuItem>
+          <MenuDivider />
+          <Center>
+            <SignOutButton />
+          </Center>
+        </MenuList>
+      </Menu>
     </>
   );
 }
