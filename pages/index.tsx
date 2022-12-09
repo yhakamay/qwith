@@ -1,4 +1,5 @@
 import {
+  Heading,
   HStack,
   PinInput,
   PinInputField,
@@ -6,7 +7,6 @@ import {
   useToast,
   VStack,
 } from "@chakra-ui/react";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useHttpsCallable } from "react-firebase-hooks/functions";
@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <>
       <VStack spacing={4} pt="30vh">
-        <Image src="/vercel.svg" width={200} height={200} alt="logo" />
+        <Heading size="lg">Enter the PIN to join 🎉</Heading>
         <HStack pt={8}>
           <PinInput
             onChange={onPinChange}
