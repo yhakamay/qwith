@@ -34,12 +34,20 @@ export default function AuthButtons() {
         </MenuButton>
         <MenuList>
           <MenuItem>
-            <Link as={NextLink} href={`/${user.uid}/rooms/`}>
+            <Link as={NextLink} href={`/${user.uid}/rooms/`} w="100%">
               Your rooms
             </Link>
           </MenuItem>
-          <MenuItem>🚧 Your friends 🚧</MenuItem>
-          <MenuItem>🚧 Profile settings 🚧</MenuItem>
+          <MenuItem>
+            <Link color="gray" cursor="not-allowed" w="100%">
+              Your friends
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link color="gray" cursor="not-allowed" w="100%">
+              Profile
+            </Link>
+          </MenuItem>
           <MenuDivider />
           <Center>
             <SignOutButton />
