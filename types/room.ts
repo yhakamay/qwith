@@ -7,6 +7,7 @@ import {
 } from "firebase/firestore";
 
 export type Room = {
+  id?: string;
   pin: string;
   status: "waiting" | "playing" | "closed";
   title: string;
@@ -38,6 +39,7 @@ export const roomConverter: FirestoreDataConverter<Room> = {
   ): Room {
     const data = snapshot.data(options);
     return {
+      id: snapshot.id,
       pin: data.pin,
       status: data.status,
       title: data.title,
