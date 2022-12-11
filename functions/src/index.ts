@@ -31,7 +31,7 @@ exports.getRoomIdWithPin = functions.https.onCall(async (data) => {
 
 type Room = {
   pin: string;
-  status: "waiting" | "playing" | "closed";
+  status: "waiting" | "playing" | "tallying" | "closed";
   title: string;
   description: string | null;
   createdAt: Date;

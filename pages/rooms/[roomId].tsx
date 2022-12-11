@@ -1,3 +1,4 @@
+import { Box, Heading } from "@chakra-ui/react";
 import { collection, doc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { useDocumentData } from "react-firebase-hooks/firestore";
@@ -37,7 +38,7 @@ function QuizPageBody(props: QuizPortalProps) {
   const roomRef = doc(roomsRef, roomId).withConverter(roomConverter);
   const [room, loading, error, snapshot] = useDocumentData<Room>(roomRef);
 
-  if (error) {
+  if (error || !room) {
     return <SomethingWentWrong />;
   }
 
@@ -45,15 +46,27 @@ function QuizPageBody(props: QuizPortalProps) {
     return <Loading />;
   }
 
-  if (room?.status === "closed") {
+  if (room.status === "closed") {
     return <QuizResult roomId={roomId} />;
+  }
+
+  if (room.status === "tallying") {
+    return (
+      <>
+        <Heading size="lg" textAlign="center">
+          Tallying results. Hang tight!
+        </Heading>
+        <Box h="8" />
+        <Loading />
+      </>
+    );
   }
 
   if (!teamId) {
     return <QuizEntry roomId={roomId} />;
   }
 
-  if (room?.status === "waiting") {
+  if (room.status === "waiting") {
     return <QuizWaiting roomId={roomId} teamId={teamId} />;
   }
 

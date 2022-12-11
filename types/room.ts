@@ -9,7 +9,7 @@ import {
 export type Room = {
   id?: string;
   pin: string;
-  status: "waiting" | "playing" | "closed";
+  status: "waiting" | "playing" | "tallying" | "closed";
   title: string;
   description: string | null;
   createdAt: Date;
