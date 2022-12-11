@@ -8,7 +8,7 @@ import { Room, roomConverter } from "../../types/room";
 import Loading from "../atoms/Loading";
 import { SomethingWentWrong } from "../atoms/SomethingWentWrong";
 import NewQuizForm from "../molecules/NewQuizForm";
-import QuizzesList from "../molecules/quizzesList";
+import QuizzesList from "../molecules/QuizzesList";
 
 type NewQuizProps = {
   roomId: string;

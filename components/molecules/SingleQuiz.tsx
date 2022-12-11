@@ -1,7 +1,8 @@
 import {
+  Box,
   Card,
   CardBody,
-  CardHeader,
+  Heading,
   Radio,
   RadioGroup,
   StackDivider,
@@ -23,25 +24,30 @@ export default function SingleQuiz(props: SingleQuizProps) {
   const [ans, setAns] = useState("");
 
   return (
-    <Card
-      w={{
-        base: "sm",
-        md: "lg",
-      }}
-    >
-      <CardHeader>{quiz.question}</CardHeader>
-      <CardBody>
-        <RadioGroup onChange={(e) => updateAns(e)} value={ans}>
-          <VStack divider={<StackDivider />} spacing="4">
-            {quiz.options.map((option, index) => (
-              <Radio key={index} value={option}>
-                {option}
-              </Radio>
-            ))}
-          </VStack>
-        </RadioGroup>
-      </CardBody>
-    </Card>
+    <>
+      <Heading size="lg" textAlign="center">
+        {quiz.question}
+      </Heading>
+      <Box h="8" />
+      <Card
+        w={{
+          base: "sm",
+          md: "lg",
+        }}
+      >
+        <CardBody>
+          <RadioGroup onChange={(e) => updateAns(e)} value={ans}>
+            <VStack divider={<StackDivider />} spacing="4">
+              {quiz.options.map((option, index) => (
+                <Radio key={index} value={option}>
+                  {option}
+                </Radio>
+              ))}
+            </VStack>
+          </RadioGroup>
+        </CardBody>
+      </Card>
+    </>
   );
 
   async function updateAns(newAns: string) {
