@@ -31,6 +31,7 @@ export default function QuizWaiting(props: QuizWaitingProps) {
   const roomRef = doc(roomsRef, roomId as string).withConverter(roomConverter);
   const teamsRef = collection(roomRef, "teams").withConverter(teamConverter);
   const [teams, loading, error] = useCollectionData<Team>(teamsRef);
+  const isViewer = teamId === "viewer";
 
   if (error) {
     return (
@@ -51,7 +52,7 @@ export default function QuizWaiting(props: QuizWaitingProps) {
         <Heading size="md">{`Waiting for others to join`}</Heading>
         <Spinner size="sm" />
       </HStack>
-      {teamId === "viewer" ? (
+      {isViewer ? (
         <Alert status="info">
           <AlertIcon />
           Joining as a viewer. You will not be able to answer questions.
