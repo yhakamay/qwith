@@ -28,6 +28,7 @@ export default function SingleQuiz(props: SingleQuizProps) {
   const [ans, setAns] = useState("");
   const toast = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const isViewer = teamId === "viewer";
 
   return (
     <>
@@ -42,7 +43,11 @@ export default function SingleQuiz(props: SingleQuizProps) {
         }}
       >
         <CardBody>
-          <RadioGroup onChange={(e) => setAns(e)} value={ans}>
+          <RadioGroup
+            onChange={(e) => setAns(e)}
+            isDisabled={isViewer}
+            value={ans}
+          >
             <VStack divider={<StackDivider />} spacing="4">
               {quiz.options.map((option, index) => (
                 <Radio key={index} value={option}>
@@ -54,15 +59,28 @@ export default function SingleQuiz(props: SingleQuizProps) {
         </CardBody>
       </Card>
       <Box h="4" />
-      <Button onClick={submitAns} isLoading={isSubmitting} colorScheme="green">
-        Submit
-      </Button>
+      {isViewer ? (
+        <Alert status="info">
+          <AlertIcon />
+          You are viewing the quiz as a viewer. You cannot submit an answer.
+        </Alert>
+      ) : (
+        <Button
+          onClick={submitAns}
+          isLoading={isSubmitting}
+          colorScheme="green"
+        >
+          Submit
+        </Button>
+      )}
       <Box h="4" />
-      <Alert status="info">
-        <AlertIcon />
-        You can update your answer during the response time but not after moving
-        on to the next question.
-      </Alert>
+      {!isViewer ? (
+        <Alert status="info">
+          <AlertIcon />
+          You can update your answer during the response time but not after
+          moving on to the next question.
+        </Alert>
+      ) : null}
     </>
   );
 

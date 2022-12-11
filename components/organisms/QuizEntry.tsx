@@ -1,9 +1,14 @@
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
   FormControl,
   Heading,
+  IconButton,
   Input,
+  InputGroup,
+  InputRightElement,
+  Text,
   useToast,
   VStack,
 } from "@chakra-ui/react";
@@ -31,22 +36,36 @@ export default function QuizEntry(props: QuizEntryProps) {
       <Box h="4" />
       <form onSubmit={handleSubmit}>
         <FormControl isRequired>
-          <Input
-            type="text"
-            placeholder="Name ❤️"
-            onChange={(e) => setTeamName(e.currentTarget.value)}
-          />
+          <InputGroup>
+            <Input
+              type="text"
+              placeholder="Name ❤️"
+              onChange={(e) => setTeamName(e.currentTarget.value)}
+            />
+            <InputRightElement>
+              <IconButton
+                size="sm"
+                type="submit"
+                colorScheme="green"
+                isLoading={isLoading}
+                disabled={isLoading}
+                borderRadius="full"
+                icon={<ArrowForwardIcon />}
+                aria-label={"Next"}
+              ></IconButton>
+            </InputRightElement>
+          </InputGroup>
         </FormControl>
-        <Button
-          type="submit"
-          colorScheme="green"
-          mt={4}
-          width="full"
-          isLoading={isLoading}
-        >
-          Next
-        </Button>
       </form>
+      <Text fontSize="xs">or</Text>
+      <Button
+        variant="ghost"
+        onClick={() => {
+          router.push(`/rooms/${roomId}?teamId=viewer`);
+        }}
+      >
+        Join as read-only
+      </Button>
     </VStack>
   );
 
