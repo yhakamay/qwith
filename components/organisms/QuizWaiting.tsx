@@ -1,8 +1,9 @@
 import {
+  Alert,
+  AlertIcon,
   Box,
   Card,
   CardBody,
-  CardHeader,
   Center,
   Heading,
   HStack,
@@ -25,7 +26,7 @@ export type QuizWaitingProps = {
 };
 
 export default function QuizWaiting(props: QuizWaitingProps) {
-  const { roomId } = props;
+  const { roomId, teamId } = props;
   const roomsRef = collection(db, "rooms");
   const roomRef = doc(roomsRef, roomId as string).withConverter(roomConverter);
   const teamsRef = collection(roomRef, "teams").withConverter(teamConverter);
@@ -50,11 +51,13 @@ export default function QuizWaiting(props: QuizWaitingProps) {
         <Heading size="md">{`Waiting for others to join`}</Heading>
         <Spinner size="sm" />
       </HStack>
+      {teamId === "viewer" ? (
+        <Alert status="info">
+          <AlertIcon />
+          Joining as a viewer. You will not be able to answer questions.
+        </Alert>
+      ) : null}
       <Card minWidth="sm" maxWidth="100vw">
-        <CardHeader>
-          <Heading size="md">Teams</Heading>
-        </CardHeader>
-
         <CardBody>
           <Stack divider={<StackDivider />} spacing="4">
             {teams?.map((team) => (
