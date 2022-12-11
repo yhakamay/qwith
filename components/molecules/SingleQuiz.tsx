@@ -1,4 +1,6 @@
 import {
+  Alert,
+  AlertIcon,
   Box,
   Button,
   Card,
@@ -55,6 +57,12 @@ export default function SingleQuiz(props: SingleQuizProps) {
       <Button onClick={submitAns} isLoading={isSubmitting} colorScheme="green">
         Submit
       </Button>
+      <Box h="4" />
+      <Alert status="info">
+        <AlertIcon />
+        You can update your answer during the response time but not after moving
+        on to the next question.
+      </Alert>
     </>
   );
 
