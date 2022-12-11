@@ -1,4 +1,4 @@
-import { Center, Heading, Spinner, VStack } from "@chakra-ui/react";
+import { Center, Spinner, VStack } from "@chakra-ui/react";
 import { collection, doc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { db } from "../../firebaseConfig";
@@ -34,7 +34,6 @@ export default function QuizPlay(props: QuizPlayProps) {
 
   return (
     <VStack pt="30vh">
-      <Heading>{room?.title}</Heading>
       <CurrentQuiz
         quizzesRef={quizzesRef}
         teamId={teamId}
