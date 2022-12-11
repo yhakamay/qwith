@@ -33,7 +33,7 @@ export default function QuizPlay(props: QuizPlayProps) {
   }
 
   return (
-    <VStack pt="30vh">
+    <VStack>
       <CurrentQuiz
         quizzesRef={quizzesRef}
         teamId={teamId}
