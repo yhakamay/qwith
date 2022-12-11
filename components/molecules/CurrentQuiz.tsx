@@ -3,7 +3,7 @@ import { useDocumentData } from "react-firebase-hooks/firestore";
 import { Quiz, quizConverter } from "../../types/quiz";
 import Loading from "../atoms/Loading";
 import { SomethingWentWrong } from "../atoms/SomethingWentWrong";
-import SingleQuiz from "./singleQuiz";
+import SingleQuiz from "./SingleQuiz";
 
 type CurrentQuizProps = {
   roomId: string;
