@@ -1,4 +1,12 @@
-import { Button, FormControl, Input, useToast, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  FormControl,
+  Heading,
+  Input,
+  useToast,
+  VStack,
+} from "@chakra-ui/react";
 import { addDoc, collection, doc } from "firebase/firestore";
 import router from "next/router";
 import { useState } from "react";
@@ -17,16 +25,26 @@ export default function QuizEntry(props: QuizEntryProps) {
 
   return (
     <VStack spacing={4} pt="30vh">
+      <Heading size="lg" textAlign="center">
+        Enter your name
+      </Heading>
+      <Box h="4" />
       <form onSubmit={handleSubmit}>
         <FormControl isRequired>
           <Input
             type="text"
-            placeholder="Team name ❤️"
+            placeholder="Name ❤️"
             onChange={(e) => setTeamName(e.currentTarget.value)}
           />
         </FormControl>
-        <Button type="submit" mt={4} width="full" isLoading={isLoading}>
-          Create team
+        <Button
+          type="submit"
+          colorScheme="green"
+          mt={4}
+          width="full"
+          isLoading={isLoading}
+        >
+          Next
         </Button>
       </form>
     </VStack>
