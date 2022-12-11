@@ -62,7 +62,7 @@ export default function SingleQuiz(props: SingleQuizProps) {
       {isViewer ? (
         <Alert status="info">
           <AlertIcon />
-          You are viewing the quiz as a viewer. You cannot submit an answer.
+          Joining as a viewer. You cannot submit an answer.
         </Alert>
       ) : (
         <Button

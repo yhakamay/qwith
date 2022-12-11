@@ -55,7 +55,7 @@ export default function QuizWaiting(props: QuizWaitingProps) {
       {isViewer ? (
         <Alert status="info">
           <AlertIcon />
-          Joining as a viewer. You will not be able to answer questions.
+          Joining as a viewer. You cannot submit an answer.
         </Alert>
       ) : null}
       <Card minWidth="sm" maxWidth="100vw">
