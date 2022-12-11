@@ -17,6 +17,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { db } from "../../firebaseConfig";
 import { roomConverter } from "../../types/room";
 import { Team, teamConverter } from "../../types/team";
+import Loading from "../atoms/Loading";
 
 export type QuizWaitingProps = {
   roomId: string;
@@ -40,11 +41,7 @@ export default function QuizWaiting(props: QuizWaitingProps) {
   }
 
   if (loading) {
-    return (
-      <Center h="100vh">
-        <Heading>Loading...</Heading>
-      </Center>
-    );
+    return <Loading />;
   }
 
   return (
