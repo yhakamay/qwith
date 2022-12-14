@@ -1,7 +1,6 @@
 import {
   Alert,
   AlertIcon,
-  Box,
   Card,
   CardBody,
   Center,
@@ -58,18 +57,21 @@ export default function QuizWaiting(props: QuizWaitingProps) {
           Joining as a viewer. You cannot submit an answer.
         </Alert>
       ) : null}
-      <Card minWidth="sm" maxWidth="100vw">
+      <Card w={{ base: "sm", md: "lg" }}>
         <CardBody>
           <Stack divider={<StackDivider />} spacing="4">
             {teams?.map((team) => (
               <>
-                <Heading size="xs" textTransform="uppercase">
-                  {team.name}
-                </Heading>
-
-                <Box key={team.id}>
-                  <Text>{team.name}</Text>
-                </Box>
+                <HStack>
+                  <Heading size="sm" textTransform="uppercase">
+                    {team.name}
+                  </Heading>
+                  {team.id === teamId ? (
+                    <Text fontSize="xs" color="gray.500">
+                      (You)
+                    </Text>
+                  ) : null}
+                </HStack>
               </>
             ))}
           </Stack>
