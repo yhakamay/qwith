@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Heading, HStack, Text } from "@chakra-ui/react";
+import { Box, Button, Divider, HStack } from "@chakra-ui/react";
 import { collection, CollectionReference, doc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { useHttpsCallable } from "react-firebase-hooks/functions";
@@ -6,6 +6,7 @@ import { db, functions } from "../../firebaseConfig";
 import { Quiz, quizConverter } from "../../types/quiz";
 import { Room, roomConverter } from "../../types/room";
 import Loading from "../atoms/Loading";
+import { QuizCard } from "../atoms/QuizCard";
 import { SomethingWentWrong } from "../atoms/SomethingWentWrong";
 import NewQuizForm from "../molecules/NewQuizForm";
 import QuizzesList from "../molecules/QuizzesList";
@@ -35,8 +36,6 @@ export default function NewQuiz(props: NewQuizProps) {
   if (room.status === "waiting") {
     return (
       <>
-        <Heading>{room.title}</Heading>
-        <Text>{room.description}</Text>
         <Button
           colorScheme="green"
           onClick={async () => {
@@ -59,8 +58,6 @@ export default function NewQuiz(props: NewQuizProps) {
 
   return (
     <>
-      <Heading>{room.title}</Heading>
-      <Text>{room.description}</Text>
       <CurrentQuizPreview
         quizzesRef={quizzesRef}
         currentQuizId={room.currentQuizId!}
@@ -110,10 +107,5 @@ function CurrentQuizPreview(props: CurrentQuizPreviewProps) {
     return <Loading />;
   }
 
-  return (
-    <Box>
-      <Heading size="md">{currentQuiz.question}</Heading>
-      <Text>{currentQuiz.answer}</Text>
-    </Box>
-  );
+  return <QuizCard quiz={currentQuiz} />;
 }

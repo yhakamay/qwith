@@ -17,7 +17,7 @@ import { Quiz } from "../../types/quiz";
 
 type QuizCardProps = {
   quiz: Quiz;
-  index: number;
+  index?: number;
   quizzesRef?: CollectionReference<Quiz>;
   editable?: boolean;
 };
@@ -31,7 +31,7 @@ export function QuizCard(props: QuizCardProps) {
       <CardBody>
         <HStack>
           <Stat>
-            <StatLabel># {index + 1}</StatLabel>
+            {index !== undefined && <StatLabel># {index + 1}</StatLabel>}
             <StatNumber>{question}</StatNumber>
             <StatHelpText>
               <UnorderedList>
