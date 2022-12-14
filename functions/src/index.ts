@@ -41,10 +41,14 @@ type Room = {
   currentQuizId: string | null;
 };
 
-export type Quiz = {
+type Quiz = {
   id?: string;
   question: string;
   options: string[];
+  answer: string;
+};
+
+type Answer = {
   answer: string;
 };
 
@@ -203,3 +207,42 @@ exports.endQuiz = functions.https.onCall(async (data) => {
     currentQuizId: null,
   } as Partial<Room>);
 });
+
+// Trigger this function when rooms/{roomId}/quizzes/{quizId}/answers/{teamId} is created
+// or updated. This function will compare the answer to the correct answer and update
+// the team's score in rooms/{roomId}/teams/{teamId} if the answer is correct.
+exports.updateTeamScore = functions.firestore
+  .document("rooms/{roomId}/quizzes/{quizId}/answers/{teamId}")
+  .onWrite(async (change, context) => {
+    const roomId = context.params.roomId;
+    const quizId = context.params.quizId;
+    const teamId = context.params.teamId;
+
+    const quizDoc = await getQuizDoc(roomId, quizId);
+    const quiz = quizDoc.data() as Quiz;
+
+    if (!quiz) {
+      throw new functions.https.HttpsError(
+        "internal",
+        "Quiz data is null or undefined"
+      );
+    }
+
+    const answer = change.after.data() as Answer;
+
+    if (!answer) {
+      throw new functions.https.HttpsError(
+        "internal",
+        "Answer data is null or undefined"
+      );
+    }
+
+    const teamRef = roomsRef.doc(roomId).collection("teams").doc(teamId);
+    const correctAnswer = quiz.answer;
+
+    if (answer.answer === correctAnswer) {
+      await teamRef.update({
+        score: admin.firestore.FieldValue.increment(1),
+      });
+    }
+  });
