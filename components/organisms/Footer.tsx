@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <Center mt={32}>
+    <Center my={8}>
       <HStack spacing={4}>
         <Link
           href="https://firebase.google.com/"
