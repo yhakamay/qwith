@@ -8,7 +8,7 @@ import {
   MenuList,
   Text,
 } from "@chakra-ui/react";
-import { collection, doc } from "firebase/firestore";
+import { collection, doc, updateDoc } from "firebase/firestore";
 import { GetServerSideProps } from "next";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDocumentData } from "react-firebase-hooks/firestore";
@@ -42,15 +42,24 @@ export default function CreateQuizPage(props: CreateQuizPageProps) {
     <>
       <Heading>{room.title}</Heading>
       <Text>{room.description}</Text>
+      {/* Change the status of the room */}
       <Menu>
         <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
           Status
         </MenuButton>
         <MenuList>
-          <MenuItem>Waiting</MenuItem>
-          <MenuItem>Playing</MenuItem>
-          <MenuItem>Tallying</MenuItem>
-          <MenuItem>Closed</MenuItem>
+          <MenuItem onClick={() => setStatus(roomId, "waiting")}>
+            Waiting
+          </MenuItem>
+          <MenuItem onClick={() => setStatus(roomId, "playing")}>
+            Playing
+          </MenuItem>
+          <MenuItem onClick={() => setStatus(roomId, "tallying")}>
+            Tallying
+          </MenuItem>
+          <MenuItem onClick={() => setStatus(roomId, "closed")}>
+            Closed
+          </MenuItem>
         </MenuList>
       </Menu>
       <NewQuiz roomId={roomId} room={room} />
@@ -67,3 +76,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   };
 };
+
+function setStatus(
+  roomId: string,
+  status: "waiting" | "playing" | "tallying" | "closed"
+) {
+  const roomsRef = collection(db, "rooms");
+  const roomRef = doc(roomsRef, roomId).withConverter(roomConverter);
+  updateDoc(roomRef, { status });
+}
